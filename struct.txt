@@ -1,0 +1,13 @@
+src/
+|-- components/
+|   |-- LoanForm.jsx
+|   |-- DepositForm.jsx
+|-- config/
+|   |-- loanInfo.js
+|-- pages/
+|   |-- LoanSavings.jsx
+|   |-- Home.jsx
+|   |-- DepositSavings.jsx
+|-- App.jsx
+|-- index.css
+|-- main.jsx
