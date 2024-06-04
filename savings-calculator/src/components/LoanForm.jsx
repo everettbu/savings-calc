@@ -16,10 +16,10 @@ const LoanForm = ({ onSubmit }) => {
   const validationSchema = Yup.object({
     loanType: Yup.string().oneOf(['personal', 'auto'], 'Invalid loan type').required('Required'),
     ficoScore: Yup.string().oneOf(['excellent', 'veryGood', 'average', 'notSoGood', 'notSure'], 'Invalid Fico score').required('Required'),
-    balance: Yup.number().required('Required').min(0, 'Must be positive'),
+    balance: Yup.number().required('Required').min(5000, 'Must be above $5000'),
     interestRate: Yup.number().required('Required').min(0, 'Must be positive').max(100, 'Must be less than 100%'),
     monthlyPayment: Yup.number().required('Required').min(0, 'Must be positive'),
-    monthsLeft: Yup.number().required('Required').min(0, 'Must be positive'),
+    monthsLeft: Yup.number().required('Required').min(12, 'Must be above 12'),
     vehicleModelAge: Yup.string().test(
       'vehicleModelAge',
       'Vehicle Model Age is required for Auto loans',

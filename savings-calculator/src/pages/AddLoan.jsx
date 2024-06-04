@@ -13,7 +13,7 @@ const LoanCalculator = () => {
   };
 
   const calculateLoanSavings = (values) => {
-    let { loanType, balance, interestRate, monthlyPayment, monthsLeft, vehicleModelAge } = values; // Changed carModelAge to vehicleModelAge for consistency
+    let { loanType, balance, interestRate, monthlyPayment, monthsLeft, vehicleModelAge } = values; 
     const annualInterestRate = interestRate / 100;
     const currentRemainingLoanValue = monthlyPayment * monthsLeft;
 
