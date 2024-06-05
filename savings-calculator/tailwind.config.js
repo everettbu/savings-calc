@@ -5,7 +5,9 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        navy: '#001f3f', // Define the navy color here
+        primary: '#001e60', 
+        secondary: '#509e2f',
+        tertiary: '#DE7C00',
       },
     },
   },
