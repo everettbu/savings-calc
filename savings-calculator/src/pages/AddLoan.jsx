@@ -3,7 +3,7 @@ import LoanForm from '../components/LoanForm';
 import { calculateLoanSavings } from '../utils/loanCalculations';
 import { LoanContext } from '../context/LoanContext';
 
-const LoanCalculator = () => {
+const AddLoan = () => {
   const [results, setResults] = useState(null);
   const { addLoan } = useContext(LoanContext);
 
@@ -35,4 +35,4 @@ const LoanCalculator = () => {
   );
 };
 
-export default LoanCalculator;
+export default AddLoan;

@@ -16,6 +16,10 @@ const Home = () => {
     navigate('/loans');
   };
 
+  const editDeposit = (index) => {
+    navigate(`/edit-deposit/${index}`);
+  };
+
   return (
     <div className="min-h-screen flex flex-col">
       <header className="bg-primary text-white text-center py-4 w-full">
@@ -46,7 +50,7 @@ const Home = () => {
           </button>
           <div className="mt-6 w-full max-w-md">
             {deposits.map((deposit, index) => (
-              <div key={index} className="bg-white p-4 rounded-lg shadow-md mb-4" onClick={() => editDeposit(index)}>
+              <div key={index} className="bg-white p-4 rounded-lg shadow-md mb-4 cursor-pointer" onClick={() => editDeposit(index)}>
                 <h3 className="text-xl font-semibold">Deposit {index + 1}</h3>
                 <p>Balance: ${deposit.balance}</p>
                 <p>Annual Yield: {deposit.annualYield}%</p>

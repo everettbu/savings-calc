@@ -20,12 +20,17 @@ export const DepositProvider = ({ children }) => {
     setDeposits([...deposits, deposit]);
   };
 
+  const updateDeposit = (index, updatedDeposit) => {
+    const newDeposits = deposits.map((d, i) => (i === index ? updatedDeposit : d));
+    setDeposits(newDeposits);
+  };
+
   const clearDeposits = () => {
     setDeposits([]);
   };
 
   return (
-    <DepositContext.Provider value={{ deposits, addDeposit, clearDeposits }}>
+    <DepositContext.Provider value={{ deposits, addDeposit, updateDeposit, clearDeposits }}>
       {children}
     </DepositContext.Provider>
   );
