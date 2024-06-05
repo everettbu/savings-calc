@@ -52,8 +52,9 @@ const Home = () => {
             {deposits.map((deposit, index) => (
               <div key={index} className="bg-white p-4 rounded-lg shadow-md mb-4 cursor-pointer" onClick={() => editDeposit(index)}>
                 <h3 className="text-xl font-semibold">Deposit {index + 1}</h3>
+                <p>Bank: {deposit.bank}</p>
                 <p>Balance: ${deposit.balance}</p>
-                <p>Annual Yield: {deposit.annualYield}%</p>
+                <p>Annual Percentage Rate: {deposit.annualYield}%</p>
                 <p>Savings: ${deposit.savings !== undefined ? deposit.savings.toFixed(2) : 'N/A'}</p>
               </div>
             ))}
@@ -78,7 +79,8 @@ const Home = () => {
                 <h3 className="text-xl font-semibold">Loan {index + 1}</h3>
                 <p>Type: {loan.loanType}</p>
                 <p>Balance: ${loan.balance}</p>
-                <p>Interest Rate: {loan.interestRate}%</p>
+                <p>Interest Rate: {loan.rate}%</p>
+                <p>Monthly Payment: ${loan.monthlyPayment}</p>
                 <p>Savings: ${loan.savings !== undefined ? loan.savings.toFixed(2) : 'N/A'}</p>
               </div>
             ))}

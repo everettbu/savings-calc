@@ -2,13 +2,9 @@ import React from 'react';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
 
-const DepositForm = ({ onSubmit, inputClass, labelClass, errorClass, buttonClass, formClass }) => {
-  const initialValues = {
-    balance: '',
-    annualYield: '',
-  };
-
+const DepositForm = ({ initialValues, onSubmit, inputClass, labelClass, errorClass, buttonClass, formClass }) => {
   const validationSchema = Yup.object({
+    bank: Yup.string().required('Required'),
     balance: Yup.number().required('Required').min(0, 'Must be positive'),
     annualYield: Yup.number().required('Required').min(0, 'Must be positive').max(100, 'Must be less than 100%'),
   });
@@ -25,7 +21,7 @@ const DepositForm = ({ onSubmit, inputClass, labelClass, errorClass, buttonClass
       {({ isSubmitting }) => (
         <Form className={formClass}>
           <div className="mb-4">
-            <label htmlFor="bankName" className={labelClass}>Bank Name</label>
+            <label htmlFor="bank" className={labelClass}>Bank Name</label>
             <Field type="string" name="bank" id="bank" className={inputClass} />
             <ErrorMessage name="bank" component="div" className={errorClass} />
           </div>
@@ -35,7 +31,7 @@ const DepositForm = ({ onSubmit, inputClass, labelClass, errorClass, buttonClass
             <ErrorMessage name="balance" component="div" className={errorClass} />
           </div>
           <div className="mb-4">
-            <label htmlFor="annualYield" className={labelClass}>Annual Yield (%)</label>
+            <label htmlFor="annualYield" className={labelClass}>Annual Percentage Rate (%)</label>
             <Field type="number" name="annualYield" id="annualYield" className={inputClass} />
             <ErrorMessage name="annualYield" component="div" className={errorClass} />
           </div>
