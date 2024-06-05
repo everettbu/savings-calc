@@ -25,6 +25,11 @@ const DepositForm = ({ onSubmit, inputClass, labelClass, errorClass, buttonClass
       {({ isSubmitting }) => (
         <Form className={formClass}>
           <div className="mb-4">
+            <label htmlFor="bankName" className={labelClass}>Bank Name</label>
+            <Field type="string" name="bank" id="bank" className={inputClass} />
+            <ErrorMessage name="bank" component="div" className={errorClass} />
+          </div>
+          <div className="mb-4">
             <label htmlFor="balance" className={labelClass}>Account Balance</label>
             <Field type="number" name="balance" id="balance" className={inputClass} />
             <ErrorMessage name="balance" component="div" className={errorClass} />

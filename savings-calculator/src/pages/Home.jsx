@@ -14,7 +14,7 @@ const Home = () => {
 
   return (
     <div className="min-h-screen flex flex-col">
-      <header className="bg-navy text-white text-center py-4 w-full">
+      <header className="bg-primary text-white text-center py-4 w-full">
         <h1 className="text-4xl font-bold">Derisq Savings Calculator</h1>
       </header>
       <div className="flex w-full mt-3 text-center">

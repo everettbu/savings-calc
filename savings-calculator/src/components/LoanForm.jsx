@@ -45,6 +45,11 @@ const LoanForm = ({ onSubmit, inputClass, labelClass, errorClass, buttonClass, f
       {({ isSubmitting, values }) => (
         <Form className={formClass}>
           <div className="mb-4">
+            <label htmlFor="bankName" className={labelClass}>Bank Name</label>
+            <Field type="string" name="bank" id="bank" className={inputClass} />
+            <ErrorMessage name="bank" component="div" className={errorClass} />
+          </div>
+          <div className="mb-4">
             <label htmlFor="loanType" className={labelClass}>Loan Type</label>
             <Field as="select" name="loanType" id="loanType" className={inputClass}>
               <option value="" label="Select loan type" />
