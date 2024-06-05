@@ -5,7 +5,7 @@ import { DepositContext } from '../context/DepositContext';
 import { calculateDepositSavings } from '../utils/depositCalculations';
 
 const EditDeposit = () => {
-  const { deposits, updateDeposit } = useContext(DepositContext);
+  const { deposits, updateDeposit, deleteDeposit } = useContext(DepositContext);
   const { id } = useParams();
   const deposit = deposits[parseInt(id, 10)];
   const [results, setResults] = useState(null);
@@ -14,8 +14,14 @@ const EditDeposit = () => {
   const handleFormSubmit = (values) => {
     const savings = calculateDepositSavings(values.balance, values.annualYield);
     const updatedDeposit = { ...values, savings };
+
     updateDeposit(parseInt(id, 10), updatedDeposit);
     setResults(updatedDeposit);
+    navigate('/');
+  };
+
+  const handleDelete = () => {
+    deleteDeposit(parseInt(id, 10));
     navigate('/');
   };
 
@@ -38,9 +44,15 @@ const EditDeposit = () => {
         />
         {results !== null && (
           <div className="mt-4 text-lg text-green-500">
-            Deposit savings: ${results.savings.toFixed(2)}
+            Your savings: ${results.savings.toFixed(2)}
           </div>
         )}
+        <button
+          onClick={handleDelete}
+          className="w-full bg-red-600 text-white py-2 px-4 rounded-md hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500 transition duration-300 mt-4"
+        >
+          Delete Account
+        </button>
       </div>
     </div>
   );

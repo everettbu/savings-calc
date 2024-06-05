@@ -5,8 +5,8 @@ import { LoanContext } from '../context/LoanContext';
 
 const Home = () => {
   const navigate = useNavigate();
-  const { deposits, clearDeposits } = useContext(DepositContext);
-  const { loans, clearLoans } = useContext(LoanContext);
+  const { deposits } = useContext(DepositContext);
+  const { loans } = useContext(LoanContext);
 
   const goToDepositCalculator = () => {
     navigate('/deposits');
@@ -46,12 +46,6 @@ const Home = () => {
           >
             Add Deposit
           </button>
-          <button
-            onClick={clearDeposits}
-            className="bg-red-500 text-white px-4 py-2 rounded-lg hover:bg-red-700 transition duration-300 mb-4"
-          >
-            Clear Deposits
-          </button>
           <div className="mt-6 w-full max-w-md">
             {deposits.map((deposit, index) => (
               <div key={index} className="bg-white p-4 rounded-lg shadow-md mb-4 cursor-pointer" onClick={() => editDeposit(index)}>
@@ -71,21 +65,16 @@ const Home = () => {
           >
             Add Loan
           </button>
-          <button
-            onClick={clearLoans}
-            className="bg-red-500 text-white px-4 py-2 rounded-lg hover:bg-red-700 transition duration-300 mb-4"
-          >
-            Clear Loans
-          </button>
           <div className="mt-6 w-full max-w-md">
             {loans.map((loan, index) => (
               <div key={index} className="bg-white p-4 rounded-lg shadow-md mb-4 cursor-pointer" onClick={() => editLoan(index)}>
                 <h3 className="text-xl font-semibold">Loan {index + 1}</h3>
-                <p>Bank: {loan.bank}</p>
                 <p>Type: {loan.loanType}</p>
+                <p>Fico Score: {loan.ficoScore}</p>
                 <p>Balance: ${loan.balance}</p>
                 <p>Interest Rate: {loan.interestRate}%</p>
                 <p>Monthly Payment: ${loan.monthlyPayment}</p>
+                <p>Months Left: {loan.monthsLeft}</p>
                 <p>Savings: ${loan.savings !== undefined ? loan.savings.toFixed(2) : 'N/A'}</p>
               </div>
             ))}

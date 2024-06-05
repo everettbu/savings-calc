@@ -5,20 +5,23 @@ import { LoanContext } from '../context/LoanContext';
 import { calculateLoanSavings } from '../utils/loanCalculations';
 
 const EditLoan = () => {
-  const { loans, updateLoan } = useContext(LoanContext);
+  const { loans, updateLoan, deleteLoan } = useContext(LoanContext);
   const { id } = useParams();
   const loan = loans[parseInt(id, 10)];
   const [results, setResults] = useState(null);
   const navigate = useNavigate();
 
   const handleFormSubmit = (values) => {
-    // Calculate savings with the new values
     const savings = calculateLoanSavings(values);
     const updatedLoan = { ...values, savings };
 
-    // Update the loan with the new values
     updateLoan(parseInt(id, 10), updatedLoan);
     setResults(updatedLoan);
+    navigate('/');
+  };
+
+  const handleDelete = () => {
+    deleteLoan(parseInt(id, 10));
     navigate('/');
   };
 
@@ -44,6 +47,12 @@ const EditLoan = () => {
             Your savings: ${results.savings.toFixed(2)}
           </div>
         )}
+        <button
+          onClick={handleDelete}
+          className="w-full bg-red-600 text-white py-2 px-4 rounded-md hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500 transition duration-300 mt-4"
+        >
+          Delete Account
+        </button>
       </div>
     </div>
   );

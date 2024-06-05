@@ -23,12 +23,13 @@ export const LoanProvider = ({ children }) => {
     setLoans(newLoans);
   };
 
-  const clearLoans = () => {
-    setLoans([]);
+  const deleteLoan = (index) => {
+    const newLoans = loans.filter((l, i) => i !== index);
+    setLoans(newLoans);
   };
 
   return (
-    <LoanContext.Provider value={{ loans, addLoan, updateLoan, clearLoans }}>
+    <LoanContext.Provider value={{ loans, addLoan, updateLoan, deleteLoan }}>
       {children}
     </LoanContext.Provider>
   );
