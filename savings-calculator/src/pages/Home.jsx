@@ -9,11 +9,11 @@ const Home = () => {
   const { loans } = useContext(LoanContext);
 
   const goToDepositCalculator = () => {
-    navigate('/deposits');
+    navigate('/add-deposit');
   };
 
   const goToLoanCalculator = () => {
-    navigate('/loans');
+    navigate('/add-loan');
   };
 
   const editDeposit = (index) => {

@@ -11,8 +11,8 @@ function App() {
     <Router>
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/deposits" element={<AddDeposit />} />
-        <Route path="/loans" element={<AddLoan />} />
+        <Route path="/add-deposit" element={<AddDeposit />} />
+        <Route path="/add-loan" element={<AddLoan />} />
         <Route path="/edit-deposit/:id" element={<EditDeposit />} /> 
         <Route path="/edit-loan/:id" element={<EditLoan />} /> 
       </Routes>
