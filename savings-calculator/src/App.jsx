@@ -4,6 +4,7 @@ import Home from './pages/Home';
 import AddDeposit from './pages/AddDeposit';
 import AddLoan from './pages/AddLoan';
 import EditDeposit from './pages/EditDeposit';
+import EditLoan from './pages/EditLoan';
 
 function App() {
   return (
@@ -13,6 +14,7 @@ function App() {
         <Route path="/deposits" element={<AddDeposit />} />
         <Route path="/loans" element={<AddLoan />} />
         <Route path="/edit-deposit/:id" element={<EditDeposit />} /> 
+        <Route path="/edit-loan/:id" element={<EditLoan />} /> 
       </Routes>
     </Router>
   );

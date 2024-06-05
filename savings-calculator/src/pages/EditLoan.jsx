@@ -1,33 +1,37 @@
 import React, { useContext, useState } from 'react';
+import { useNavigate, useParams } from 'react-router-dom';
 import LoanForm from '../components/LoanForm';
 import { LoanContext } from '../context/LoanContext';
 import { calculateLoanSavings } from '../utils/loanCalculations';
 
-const LoanCalculator = () => {
-  const { addLoan } = useContext(LoanContext);
+const EditLoan = () => {
+  const { loans, updateLoan } = useContext(LoanContext);
+  const { id } = useParams();
+  const loan = loans[parseInt(id, 10)];
   const [results, setResults] = useState(null);
+  const navigate = useNavigate();
 
   const handleFormSubmit = (values) => {
+    // Calculate savings with the new values
     const savings = calculateLoanSavings(values);
-    const newLoan = { ...values, savings };
-    addLoan(newLoan);
-    setResults(newLoan);
+    const updatedLoan = { ...values, savings };
+
+    // Update the loan with the new values
+    updateLoan(parseInt(id, 10), updatedLoan);
+    setResults(updatedLoan);
+    navigate('/');
   };
+
+  if (!loan) {
+    return <div>Loan not found</div>;
+  }
 
   return (
     <div className="min-h-screen flex flex-col items-center bg-gray-100 p-4">
-      <h2 className="text-3xl font-semibold mb-6 mt-4">Add Loan Account</h2>
+      <h2 className="text-3xl font-semibold mb-6 mt-4">Edit Loan Account</h2>
       <div className="bg-white p-6 rounded-lg shadow-lg w-full max-w-md">
         <LoanForm
-          initialValues={{
-            loanType: '',
-            ficoScore: '',
-            balance: '',
-            interestRate: '',
-            monthlyPayment: '',
-            monthsLeft: '',
-            vehicleModelAge: '',
-          }} // Provide default initial values
+          initialValues={loan}
           onSubmit={handleFormSubmit}
           formClass="space-y-6"
           inputClass="mt-1 p-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm w-full"
@@ -45,4 +49,4 @@ const LoanCalculator = () => {
   );
 };
 
-export default LoanCalculator;
+export default EditLoan;

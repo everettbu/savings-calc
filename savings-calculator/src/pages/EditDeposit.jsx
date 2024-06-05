@@ -12,11 +12,8 @@ const EditDeposit = () => {
   const navigate = useNavigate();
 
   const handleFormSubmit = (values) => {
-    // Calculate savings with the new values
     const savings = calculateDepositSavings(values.balance, values.annualYield);
     const updatedDeposit = { ...values, savings };
-
-    // Update the deposit with the new values
     updateDeposit(parseInt(id, 10), updatedDeposit);
     setResults(updatedDeposit);
     navigate('/');
@@ -41,7 +38,7 @@ const EditDeposit = () => {
         />
         {results !== null && (
           <div className="mt-4 text-lg text-green-500">
-            Deposit updated successfully!
+            Deposit savings: ${results.savings.toFixed(2)}
           </div>
         )}
       </div>

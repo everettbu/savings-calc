@@ -6,12 +6,10 @@ export const LoanContext = createContext();
 // Create provider component
 export const LoanProvider = ({ children }) => {
   const [loans, setLoans] = useState(() => {
-    // Load stored loans from local storage
     const savedLoans = localStorage.getItem('loans');
     return savedLoans ? JSON.parse(savedLoans) : [];
   });
 
-  // Save loans to local storage whenever they change
   useEffect(() => {
     localStorage.setItem('loans', JSON.stringify(loans));
   }, [loans]);
@@ -20,12 +18,17 @@ export const LoanProvider = ({ children }) => {
     setLoans([...loans, loan]);
   };
 
+  const updateLoan = (index, updatedLoan) => {
+    const newLoans = loans.map((l, i) => (i === index ? updatedLoan : l));
+    setLoans(newLoans);
+  };
+
   const clearLoans = () => {
     setLoans([]);
   };
 
   return (
-    <LoanContext.Provider value={{ loans, addLoan, clearLoans }}>
+    <LoanContext.Provider value={{ loans, addLoan, updateLoan, clearLoans }}>
       {children}
     </LoanContext.Provider>
   );

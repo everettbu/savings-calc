@@ -20,6 +20,10 @@ const Home = () => {
     navigate(`/edit-deposit/${index}`);
   };
 
+  const editLoan = (index) => {
+    navigate(`/edit-loan/${index}`);
+  };
+
   return (
     <div className="min-h-screen flex flex-col">
       <header className="bg-primary text-white text-center py-4 w-full">
@@ -54,7 +58,7 @@ const Home = () => {
                 <h3 className="text-xl font-semibold">Deposit {index + 1}</h3>
                 <p>Bank: {deposit.bank}</p>
                 <p>Balance: ${deposit.balance}</p>
-                <p>Annual Percentage Rate: {deposit.annualYield}%</p>
+                <p>Annual Yield: {deposit.annualYield}%</p>
                 <p>Savings: ${deposit.savings !== undefined ? deposit.savings.toFixed(2) : 'N/A'}</p>
               </div>
             ))}
@@ -75,11 +79,12 @@ const Home = () => {
           </button>
           <div className="mt-6 w-full max-w-md">
             {loans.map((loan, index) => (
-              <div key={index} className="bg-white p-4 rounded-lg shadow-md mb-4">
+              <div key={index} className="bg-white p-4 rounded-lg shadow-md mb-4 cursor-pointer" onClick={() => editLoan(index)}>
                 <h3 className="text-xl font-semibold">Loan {index + 1}</h3>
+                <p>Bank: {loan.bank}</p>
                 <p>Type: {loan.loanType}</p>
                 <p>Balance: ${loan.balance}</p>
-                <p>Interest Rate: {loan.rate}%</p>
+                <p>Interest Rate: {loan.interestRate}%</p>
                 <p>Monthly Payment: ${loan.monthlyPayment}</p>
                 <p>Savings: ${loan.savings !== undefined ? loan.savings.toFixed(2) : 'N/A'}</p>
               </div>

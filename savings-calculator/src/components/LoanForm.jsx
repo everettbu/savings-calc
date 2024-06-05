@@ -2,17 +2,7 @@ import React from 'react';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
 
-const LoanForm = ({ onSubmit, inputClass, labelClass, errorClass, buttonClass, formClass }) => {
-  const initialValues = {
-    loanType: '',
-    ficoScore: '',
-    balance: '',
-    interestRate: '',
-    monthlyPayment: '',
-    monthsLeft: '',
-    vehicleModelAge: '',
-  };
-
+const LoanForm = ({ initialValues, onSubmit, inputClass, labelClass, errorClass, buttonClass, formClass }) => {
   const validationSchema = Yup.object({
     loanType: Yup.string().oneOf(['personal', 'auto'], 'Invalid loan type').required('Required'),
     ficoScore: Yup.string().oneOf(['excellent', 'veryGood', 'average', 'notSoGood', 'notSure'], 'Invalid Fico score').required('Required'),
@@ -45,7 +35,7 @@ const LoanForm = ({ onSubmit, inputClass, labelClass, errorClass, buttonClass, f
       {({ isSubmitting, values }) => (
         <Form className={formClass}>
           <div className="mb-4">
-            <label htmlFor="bankName" className={labelClass}>Bank Name</label>
+            <label htmlFor="bank" className={labelClass}>Bank Name</label>
             <Field type="string" name="bank" id="bank" className={inputClass} />
             <ErrorMessage name="bank" component="div" className={errorClass} />
           </div>
