@@ -1,13 +1,16 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import DepositForm from '../components/DepositForm';
 import { calculateDepositSavings } from '../utils/depositCalculations';
+import { DepositContext } from '../context/DepositContext';
 
 const DepositCalculator = () => {
   const [results, setResults] = useState(null);
+  const { addDeposit } = useContext(DepositContext);
 
   const handleFormSubmit = (values) => {
     const savings = calculateDepositSavings(values.balance, values.annualYield);
     setResults(savings);
+    addDeposit({ ...values, savings });
   };
 
   return (

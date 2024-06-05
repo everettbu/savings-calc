@@ -1,20 +1,23 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import LoanForm from '../components/LoanForm';
 import { calculateLoanSavings } from '../utils/loanCalculations';
+import { LoanContext } from '../context/LoanContext';
 
 const LoanCalculator = () => {
   const [results, setResults] = useState(null);
+  const { addLoan } = useContext(LoanContext);
 
   const handleFormSubmit = (values) => {
     const savings = calculateLoanSavings(values);
     setResults(savings);
+    addLoan({ ...values, savings });
   };
 
   return (
     <div className="min-h-screen flex flex-col items-center bg-gray-100 p-4">
       <h2 className="text-3xl font-semibold mb-6 mt-4">Add Loan Account</h2>
       <div className="bg-white p-6 rounded-lg shadow-lg w-full max-w-md">
-        <LoanForm
+        <LoanForm 
           onSubmit={handleFormSubmit}
           formClass="space-y-6"
           inputClass="mt-1 p-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm w-full"
@@ -24,7 +27,7 @@ const LoanCalculator = () => {
         />
         {results !== null && (
           <div className="mt-4 text-lg text-green-500">
-            Your loan savings: ${results.toFixed(2)}
+            Your savings: ${results.toFixed(2)}
           </div>
         )}
       </div>
