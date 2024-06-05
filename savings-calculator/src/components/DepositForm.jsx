@@ -24,19 +24,19 @@ const DepositForm = ({ onSubmit }) => {
     >
       {({ isSubmitting }) => (
         <Form>
-          <div>
-            <label htmlFor="balance">Account Balance</label>
-            <Field type="number" name="balance" />
-            <ErrorMessage name="balance" component="div" className="error" />
-          </div>
-          <div>
-            <label htmlFor="annualYield">Annual Yield (%)</label>
-            <Field type="number" name="annualYield" />
-            <ErrorMessage name="annualYield" component="div" className="error" />
-          </div>
-          <button type="submit" disabled={isSubmitting}>
-            Calculate Savings
-          </button>
+            <div>
+                <label htmlFor="balance">Account Balance</label>
+                <Field type="number" name="balance" id="balance" />
+                <ErrorMessage name="balance" component="div" className="error" />
+            </div>
+            <div>
+                <label htmlFor="annualYield">Annual Yield (%)</label>
+                <Field type="number" name="annualYield" id="annualYield" />
+                <ErrorMessage name="annualYield" component="div" className="error" />
+            </div>
+            <button type="submit" disabled={isSubmitting}>
+                Calculate Savings
+            </button>
         </Form>
       )}
     </Formik>
