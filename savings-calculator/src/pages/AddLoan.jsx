@@ -51,7 +51,7 @@ const AddLoan = () => {
         )}
       </div>
     </div>
-  );
+  ); 
 };
 
 export default AddLoan;
