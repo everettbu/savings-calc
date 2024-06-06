@@ -2,6 +2,8 @@ import React, { useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { DepositContext } from '../context/DepositContext';
 import { LoanContext } from '../context/LoanContext';
+import DepositCard from '../components/DepositCard';
+import LoanCard from '../components/LoanCard';
 
 const Home = () => {
   const navigate = useNavigate();
@@ -56,13 +58,7 @@ const Home = () => {
           </button>
           <div className="mt-6 w-full max-w-md">
             {deposits.map((deposit, index) => (
-              <div key={index} className="bg-white p-4 rounded-lg shadow-md mb-4 cursor-pointer" onClick={() => editDeposit(index)}>
-                <h3 className="text-xl font-semibold">Deposit {index + 1}</h3>
-                <p>Bank: {deposit.bank}</p>
-                <p>Balance: ${deposit.balance}</p>
-                <p>Annual Yield: {deposit.annualYield}%</p>
-                <p>Savings: ${typeof deposit.savings === 'number' ? deposit.savings.toFixed(2) : 'N/A'}</p>
-              </div>
+              <DepositCard key={index} deposit={deposit} index={index} onEdit={editDeposit} />
             ))}
           </div>
         </div>
@@ -75,16 +71,7 @@ const Home = () => {
           </button>
           <div className="mt-6 w-full max-w-md">
             {loans.map((loan, index) => (
-              <div key={index} className="bg-white p-4 rounded-lg shadow-md mb-4 cursor-pointer" onClick={() => editLoan(index)}>
-                <h3 className="text-xl font-semibold">Loan {index + 1}</h3>
-                <p>Type: {loan.loanType}</p>
-                <p>Fico Score: {loan.ficoScore}</p>
-                <p>Balance: ${loan.balance}</p>
-                <p>Interest Rate: {loan.interestRate}%</p>
-                <p>Monthly Payment: ${loan.monthlyPayment}</p>
-                <p>Months Left: {loan.monthsLeft}</p>
-                <p>Savings: ${typeof loan.savings === 'number' ? loan.savings.toFixed(2) : 'N/A'}</p>
-              </div>
+              <LoanCard key={index} loan={loan} index={index} onEdit={editLoan} />
             ))}
           </div>
         </div>
