@@ -31,7 +31,7 @@ const DepositForm = ({ initialValues, onSubmit, inputClass, labelClass, errorCla
             <ErrorMessage name="balance" component="div" className={errorClass} />
           </div>
           <div className="mb-4">
-            <label htmlFor="annualYield" className={labelClass}>Annual Yield (%)</label>
+            <label htmlFor="annualYield" className={labelClass}>Annual Percentage Rate (%)</label>
             <Field type="number" name="annualYield" id="annualYield" className={inputClass} />
             <ErrorMessage name="annualYield" component="div" className={errorClass} />
           </div>
