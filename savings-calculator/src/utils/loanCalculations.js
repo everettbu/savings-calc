@@ -10,7 +10,7 @@ export const calculateLoanSavings = (values) => {
   console.log('Starting calculation...');
   console.log('loanType:', loanType);
 
-  if (loanType === 'auto') {
+  if (loanType === 'Auto') {
     console.log('Auto loan calculations...');
     console.log('vehicleModelAge:', vehicleModelAge);
     if (loan_info.auto[vehicleModelAge]) {
@@ -28,7 +28,7 @@ export const calculateLoanSavings = (values) => {
     } else {
       console.error('Invalid vehicle model age:', vehicleModelAge);
     }
-  } else if (loanType === 'personal') {
+  } else if (loanType === 'Personal') {
     console.log('Personal loan calculations...');
     let exisBal = 0;
     if (balance + exisBal > loan_info.personal.size[1]) {
