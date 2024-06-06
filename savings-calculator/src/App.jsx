@@ -7,6 +7,8 @@ import AddLoan from './pages/AddLoan';
 import EditLoan from './pages/EditLoan';
 import { DepositProvider } from './context/DepositContext';
 import { LoanProvider } from './context/LoanContext';
+import Contact from './pages/Contact';
+import Transfer from './pages/Transfer';
 
 function App() {
   return (
@@ -19,6 +21,8 @@ function App() {
             <Route path="/edit-deposit/:id" element={<EditDeposit />} />
             <Route path="/add-loan" element={<AddLoan />} />
             <Route path="/edit-loan/:id" element={<EditLoan />} />
+            <Route path="/contact" element={<Contact />} />
+            <Route path="/transfer" element={<Transfer />} />
           </Routes>
         </Router>
       </LoanProvider>
