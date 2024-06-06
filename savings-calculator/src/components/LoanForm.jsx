@@ -5,7 +5,7 @@ import * as Yup from 'yup';
 const LoanForm = ({ initialValues, onSubmit, inputClass, labelClass, errorClass, formClass }) => {
   const validationSchema = Yup.object({
     bank: Yup.string().required('Required'),
-    loanType: Yup.string().oneOf(['personal', 'auto'], 'Invalid loan type').required('Required'),
+    loanType: Yup.string().oneOf(['Personal', 'Auto'], 'Invalid loan type').required('Required'),
     ficoScore: Yup.string().oneOf(['excellent', 'veryGood', 'average', 'notSoGood', 'notSure'], 'Invalid Fico score').required('Required'),
     balance: Yup.number().required('Required').min(5000, 'Must be above $5000'),
     interestRate: Yup.number().required('Required').min(0, 'Must be positive').max(100, 'Must be less than 100%'),
@@ -16,7 +16,7 @@ const LoanForm = ({ initialValues, onSubmit, inputClass, labelClass, errorClass,
       'Vehicle Model Age is required for Auto loans',
       (value, context) => {
         const { loanType } = context.parent;
-        if (loanType === 'auto' && !value) {
+        if (loanType === 'Auto' && !value) {
           return false;
         }
         return true;
@@ -44,12 +44,12 @@ const LoanForm = ({ initialValues, onSubmit, inputClass, labelClass, errorClass,
             <label htmlFor="loanType" className={labelClass}>Loan Type</label>
             <Field as="select" name="loanType" id="loanType" className={inputClass}>
               <option value="" label="Select loan type" />
-              <option value="personal" label="Personal" />
-              <option value="auto" label="Auto" />
+              <option value="Personal" label="Personal" />
+              <option value="Auto" label="Auto" />
             </Field>
             <ErrorMessage name="loanType" component="div" className={errorClass} />
           </div>
-          {values.loanType === 'auto' && (
+          {values.loanType === 'Auto' && (
             <div className="mb-4">
               <label htmlFor="vehicleModelAge" className={labelClass}>Vehicle Model Age</label>
               <Field as="select" name="vehicleModelAge" id="vehicleModelAge" className={inputClass}>

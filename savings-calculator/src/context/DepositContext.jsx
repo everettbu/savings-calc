@@ -1,9 +1,16 @@
-import React, { createContext, useState } from 'react';
+import React, { createContext, useState, useEffect } from 'react';
 
 export const DepositContext = createContext();
 
 export const DepositProvider = ({ children }) => {
-  const [deposits, setDeposits] = useState([]);
+  const [deposits, setDeposits] = useState(() => {
+    const savedDeposits = localStorage.getItem('deposits');
+    return savedDeposits ? JSON.parse(savedDeposits) : [];
+  });
+
+  useEffect(() => {
+    localStorage.setItem('deposits', JSON.stringify(deposits));
+  }, [deposits]);
 
   const addDeposit = (deposit) => {
     setDeposits([...deposits, deposit]);
