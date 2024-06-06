@@ -24,6 +24,14 @@ const Home = () => {
     navigate(`/edit-loan/${index}`);
   };
 
+  const totalSavings = loans.reduce((total, loan) => {
+    const loanSavings = loan.savings;
+    return total + (typeof loanSavings === 'number' ? loanSavings : 0);
+  }, 0) + deposits.reduce((total, deposit) => {
+    const depositSavings = deposit.savings;
+    return total + (typeof depositSavings === 'number' ? depositSavings : 0);
+  }, 0);
+
   return (
     <div className="min-h-screen flex flex-col">
       <header className="bg-primary text-white text-center py-4 w-full">
@@ -53,7 +61,7 @@ const Home = () => {
                 <p>Bank: {deposit.bank}</p>
                 <p>Balance: ${deposit.balance}</p>
                 <p>Annual Yield: {deposit.annualYield}%</p>
-                <p>Savings: ${deposit.savings !== undefined ? deposit.savings.toFixed(2) : 'N/A'}</p>
+                <p>Savings: ${typeof deposit.savings === 'number' ? deposit.savings.toFixed(2) : 'N/A'}</p>
               </div>
             ))}
           </div>
@@ -75,12 +83,17 @@ const Home = () => {
                 <p>Interest Rate: {loan.interestRate}%</p>
                 <p>Monthly Payment: ${loan.monthlyPayment}</p>
                 <p>Months Left: {loan.monthsLeft}</p>
-                <p>Savings: ${loan.savings !== undefined ? loan.savings.toFixed(2) : 'N/A'}</p>
+                <p>Savings: ${typeof loan.savings === 'number' ? loan.savings.toFixed(2) : 'N/A'}</p>
               </div>
             ))}
           </div>
         </div>
       </main>
+      <div className="flex flex-col items-center mt-4">
+        <h3 className="text-2xl font-semibold">
+          Total Savings: ${totalSavings.toFixed(2)}
+        </h3>
+      </div>
     </div>
   );
 };
