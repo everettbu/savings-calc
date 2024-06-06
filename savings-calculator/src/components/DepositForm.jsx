@@ -2,7 +2,7 @@ import React from 'react';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
 
-const DepositForm = ({ initialValues, onSubmit, inputClass, labelClass, errorClass, buttonClass, formClass }) => {
+const DepositForm = ({ initialValues, onSubmit, inputClass, labelClass, errorClass, formClass }) => {
   const validationSchema = Yup.object({
     bank: Yup.string().required('Required'),
     balance: Yup.number().required('Required').min(0, 'Must be positive'),
@@ -19,7 +19,7 @@ const DepositForm = ({ initialValues, onSubmit, inputClass, labelClass, errorCla
       }}
     >
       {({ isSubmitting }) => (
-        <Form className={formClass}>
+        <Form id="deposit-form" className={formClass}>
           <div className="mb-4">
             <label htmlFor="bank" className={labelClass}>Bank Name</label>
             <Field type="text" name="bank" id="bank" className={inputClass} />
@@ -35,9 +35,6 @@ const DepositForm = ({ initialValues, onSubmit, inputClass, labelClass, errorCla
             <Field type="number" name="annualYield" id="annualYield" className={inputClass} />
             <ErrorMessage name="annualYield" component="div" className={errorClass} />
           </div>
-          <button type="submit" disabled={isSubmitting} className={buttonClass}>
-            Calculate Savings
-          </button>
         </Form>
       )}
     </Formik>

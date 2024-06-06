@@ -2,8 +2,9 @@ import React from 'react';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
 
-const LoanForm = ({ initialValues, onSubmit, inputClass, labelClass, errorClass, buttonClass, formClass }) => {
+const LoanForm = ({ initialValues, onSubmit, inputClass, labelClass, errorClass, formClass }) => {
   const validationSchema = Yup.object({
+    bank: Yup.string().required('Required'),
     loanType: Yup.string().oneOf(['personal', 'auto'], 'Invalid loan type').required('Required'),
     ficoScore: Yup.string().oneOf(['excellent', 'veryGood', 'average', 'notSoGood', 'notSure'], 'Invalid Fico score').required('Required'),
     balance: Yup.number().required('Required').min(5000, 'Must be above $5000'),
@@ -33,10 +34,10 @@ const LoanForm = ({ initialValues, onSubmit, inputClass, labelClass, errorClass,
       }}
     >
       {({ isSubmitting, values }) => (
-        <Form className={formClass}>
+        <Form id="loan-form" className={formClass}>
           <div className="mb-4">
             <label htmlFor="bank" className={labelClass}>Bank Name</label>
-            <Field type="string" name="bank" id="bank" className={inputClass} />
+            <Field type="text" name="bank" id="bank" className={inputClass} />
             <ErrorMessage name="bank" component="div" className={errorClass} />
           </div>
           <div className="mb-4">
@@ -92,9 +93,6 @@ const LoanForm = ({ initialValues, onSubmit, inputClass, labelClass, errorClass,
             <Field type="number" name="monthsLeft" id="monthsLeft" className={inputClass} />
             <ErrorMessage name="monthsLeft" component="div" className={errorClass} />
           </div>
-          <button type="submit" disabled={isSubmitting} className={buttonClass}>
-            Submit
-          </button>
         </Form>
       )}
     </Formik>

@@ -1,30 +1,22 @@
-import React, { createContext, useState, useEffect } from 'react';
+import React, { createContext, useState } from 'react';
 
-// Create context
 export const LoanContext = createContext();
 
-// Create provider component
 export const LoanProvider = ({ children }) => {
-  const [loans, setLoans] = useState(() => {
-    const savedLoans = localStorage.getItem('loans');
-    return savedLoans ? JSON.parse(savedLoans) : [];
-  });
-
-  useEffect(() => {
-    localStorage.setItem('loans', JSON.stringify(loans));
-  }, [loans]);
+  const [loans, setLoans] = useState([]);
 
   const addLoan = (loan) => {
     setLoans([...loans, loan]);
   };
 
   const updateLoan = (index, updatedLoan) => {
-    const newLoans = loans.map((l, i) => (i === index ? updatedLoan : l));
+    const newLoans = [...loans];
+    newLoans[index] = updatedLoan;
     setLoans(newLoans);
   };
 
   const deleteLoan = (index) => {
-    const newLoans = loans.filter((l, i) => i !== index);
+    const newLoans = loans.filter((_, i) => i !== index);
     setLoans(newLoans);
   };
 
