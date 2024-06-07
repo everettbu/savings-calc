@@ -51,3 +51,13 @@ export const calculateLoanSavings = (values) => {
   console.log('Savings increase:', savingsIncrease);
   return savingsIncrease > 0 ? savingsIncrease : 0;
 };
+
+export const checkAccuracy = (vals) => {
+  let { loanType, balance, interestRate, monthlyPayment, monthsLeft, vehicleModelAge } = vals;
+  const annualInterestRate = interestRate / 100;
+  const currentRemainingLoanValue = monthlyPayment * monthsLeft;
+  const monthlyRate = annualInterestRate/12
+  const aprRemVal = monthsLeft*(balance / (((1 + monthlyRate) ** monthsLeft - 1) / (monthlyRate * (1 + monthlyRate) ** monthsLeft))).toFixed(2);
+  const match = aprRemVal.toFixed(2) === currentRemainingLoanValue.toFixed(2) ? null : "*Monthly Payment and Interest Rate do not match";
+  return match
+}

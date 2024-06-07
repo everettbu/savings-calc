@@ -2,7 +2,7 @@ import React, { useContext, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import LoanForm from '../components/LoanForm';
 import { LoanContext } from '../context/LoanContext';
-import { calculateLoanSavings } from '../utils/loanCalculations';
+import { calculateLoanSavings, checkAccuracy } from '../utils/loanCalculations';
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
@@ -14,6 +14,7 @@ const AddLoan = () => {
   const goToHome = () => {
     navigate("/");
   };
+  const [safeguard, setSafeguard] = useState(null);
 
   const handleFormSubmit = (values) => {
     const savings = calculateLoanSavings(values);
@@ -27,6 +28,7 @@ const AddLoan = () => {
       toast.success('Loan account added to Home');
     }
     setResults(newLoan);
+    setSafeguard(checkAccuracy(values));
   };
 
   return (
@@ -61,6 +63,11 @@ const AddLoan = () => {
             <div className="mt-4 text-lg text-green-500">
               Your savings: ${results.savings.toFixed(2)}
             </div>
+            {safeguard !== null && (
+              <div>
+                {safeguard}
+              </div>
+            )}
             <button 
               onClick={goToHome}
               className="w-full bg-blue-600 text-white py-2 px-4 rounded-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 transition duration-300 mt-4"
