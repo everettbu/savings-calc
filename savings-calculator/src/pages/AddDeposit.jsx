@@ -8,19 +8,26 @@ import "react-toastify/dist/ReactToastify.css";
 
 
 const AddDeposit = () => {
-  const { addDeposit } = useContext(DepositContext);
+  const { deposits, addDeposit, updateDeposit } = useContext(DepositContext);
   const [results, setResults] = useState(null);
+  const [editingIndex, setEditingIndex] = useState(null);
   const navigate = useNavigate();
   const goToHome = () => {
-    navigate("/")
-  }
+    navigate("/");
+  };
 
   const handleFormSubmit = (values) => {
     const savings = calculateDepositSavings(values.balance, values.annualYield);
     const newDeposit = { ...values, savings };
-    addDeposit(newDeposit);
+    if (editingIndex !== null) {
+      updateDeposit(editingIndex, newDeposit);
+      toast.success('Account updated on Home');
+    } else {
+      addDeposit(newDeposit);
+      setEditingIndex(deposits.length); // Set the editing index to the newly added deposit
+      toast.success('Account added to Home');
+    }
     setResults(newDeposit);
-    toast.success('Account added to Home')
   };
 
   return (
@@ -52,8 +59,8 @@ const AddDeposit = () => {
               Your savings: ${results.savings.toFixed(2)}
             </div>
             <button 
-            onClick={goToHome}
-            className="w-full bg-blue-600 text-white py-2 px-4 rounded-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 transition duration-300 mt-4"
+              onClick={goToHome}
+              className="w-full bg-blue-600 text-white py-2 px-4 rounded-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 transition duration-300 mt-4"
             >
               Return to Home
             </button>

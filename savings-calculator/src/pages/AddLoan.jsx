@@ -7,19 +7,26 @@ import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
 const AddLoan = () => {
-  const { addLoan } = useContext(LoanContext);
+  const { loans, addLoan, updateLoan } = useContext(LoanContext);
   const [results, setResults] = useState(null);
+  const [editingIndex, setEditingIndex] = useState(null);
   const navigate = useNavigate();
   const goToHome = () => {
-    navigate('/')
-  }
+    navigate("/");
+  };
 
   const handleFormSubmit = (values) => {
     const savings = calculateLoanSavings(values);
     const newLoan = { ...values, savings };
-    addLoan(newLoan);
+    if (editingIndex !== null) {
+      updateLoan(editingIndex, newLoan);
+      toast.success('Loan account updated on Home');
+    } else {
+      addLoan(newLoan);
+      setEditingIndex(loans.length); // Set the editing index to the newly added loan
+      toast.success('Loan account added to Home');
+    }
     setResults(newLoan);
-    toast.success("Account added to Home");
   };
 
   return (
@@ -28,7 +35,6 @@ const AddLoan = () => {
       <div className="bg-white p-6 rounded-lg shadow-lg w-full max-w-md">
         <LoanForm
           initialValues={{
-            bank: '',
             loanType: '',
             ficoScore: '',
             balance: '',
@@ -56,8 +62,8 @@ const AddLoan = () => {
               Your savings: ${results.savings.toFixed(2)}
             </div>
             <button 
-            onClick={goToHome}
-            className="w-full bg-blue-600 text-white py-2 px-4 rounded-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 transition duration-300 mt-4"
+              onClick={goToHome}
+              className="w-full bg-blue-600 text-white py-2 px-4 rounded-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 transition duration-300 mt-4"
             >
               Return to Home
             </button>
