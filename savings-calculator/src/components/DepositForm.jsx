@@ -27,12 +27,12 @@ const DepositForm = ({ initialValues, onSubmit, inputClass, labelClass, errorCla
           </div>
           <div className="mb-4">
             <label htmlFor="balance" className={labelClass}>Account Balance</label>
-            <Field type="number" name="balance" id="balance" className={inputClass} />
+            <Field type="number" name="balance" id="balance" className={`${inputClass} no-spinner`} />
             <ErrorMessage name="balance" component="div" className={errorClass} />
           </div>
           <div className="mb-4">
             <label htmlFor="annualYield" className={labelClass}>Annual Percentage Rate (%)</label>
-            <Field type="number" name="annualYield" id="annualYield" className={inputClass} />
+            <Field type="number" name="annualYield" id="annualYield" className={`${inputClass} no-spinner`} />
             <ErrorMessage name="annualYield" component="div" className={errorClass} />
           </div>
         </Form>

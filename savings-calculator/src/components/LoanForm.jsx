@@ -75,22 +75,22 @@ const LoanForm = ({ initialValues, onSubmit, inputClass, labelClass, errorClass,
           </div>
           <div className="mb-4">
             <label htmlFor="balance" className={labelClass}>Balance</label>
-            <Field type="number" name="balance" id="balance" className={inputClass} />
+            <Field type="number" name="balance" id="balance" className={`${inputClass} no-spinner`} />
             <ErrorMessage name="balance" component="div" className={errorClass} />
           </div>
           <div className="mb-4">
             <label htmlFor="interestRate" className={labelClass}>Interest Rate (%)</label>
-            <Field type="number" name="interestRate" id="interestRate" className={inputClass} />
+            <Field type="number" name="interestRate" id="interestRate" className={`${inputClass} no-spinner`} />
             <ErrorMessage name="interestRate" component="div" className={errorClass} />
           </div>
           <div className="mb-4">
             <label htmlFor="monthlyPayment" className={labelClass}>Monthly Payment</label>
-            <Field type="number" name="monthlyPayment" id="monthlyPayment" className={inputClass} />
+            <Field type="number" name="monthlyPayment" id="monthlyPayment" className={`${inputClass} no-spinner`} />
             <ErrorMessage name="monthlyPayment" component="div" className={errorClass} />
           </div>
           <div className="mb-4">
             <label htmlFor="monthsLeft" className={labelClass}>Months Left</label>
-            <Field type="number" name="monthsLeft" id="monthsLeft" className={inputClass} />
+            <Field type="number" name="monthsLeft" id="monthsLeft" className={`${inputClass} no-spinner`} />
             <ErrorMessage name="monthsLeft" component="div" className={errorClass} />
           </div>
         </Form>
