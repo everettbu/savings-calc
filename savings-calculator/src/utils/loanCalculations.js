@@ -30,14 +30,9 @@ export const calculateLoanSavings = (values) => {
     }
   } else if (loanType === 'Personal') {
     console.log('Personal loan calculations...');
-    let exisBal = 0;
-    if (balance + exisBal > loan_info.personal.size[1]) {
-      balance = loan_info.personal.size[1] - exisBal;
-    }
     for (const rate of loan_info.personal.rates) {
       console.log('Rate:', rate);
       if (rate[0] <= monthsLeft && monthsLeft <= rate[1]) {
-        exisBal += balance;
         const r = rate[2] / 12;
         const divisor = ((1 + r) ** monthsLeft - 1) / (r * (1 + r) ** monthsLeft);
         const newMonthlyPayment = balance / divisor;
@@ -59,5 +54,6 @@ export const checkAccuracy = (vals) => {
   const monthlyRate = annualInterestRate/12
   const aprRemVal = monthsLeft*(balance / (((1 + monthlyRate) ** monthsLeft - 1) / (monthlyRate * (1 + monthlyRate) ** monthsLeft))).toFixed(2);
   const match = aprRemVal.toFixed(2) === currentRemainingLoanValue.toFixed(2) ? null : "*Monthly Payment and Interest Rate do not match";
-  return match
+  const tooMuch = loanType === 'Personal' && balance > 30000 ? "*Personal loans cannot exceed $30k at First City" : null;
+  return [match, tooMuch];
 }
