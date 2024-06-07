@@ -35,45 +35,47 @@ const Home = () => {
   }, 0);
 
   return (
-    <div className="min-h-screen flex flex-col">
+    <div className="min-h-screen flex flex-col bg-gray-100">
       <header className="bg-primary text-white text-center py-4 w-full">
         <h1 className="text-4xl font-bold">Derisq Savings Calculator</h1>
       </header>
-      <div className="flex w-full mt-3 text-center">
+      <div className="flex w-full mt-3 text-center items-center">
         <div className="flex-1">
           <h2 className="text-2xl font-semibold">Deposits</h2>
         </div>
+        <div className="border-r-2 border-gray-300 h-8"></div> {/* Vertical line */}
         <div className="flex-1">
           <h2 className="text-2xl font-semibold">Loans</h2>
         </div>
       </div>
       <div className="border-b-2 border-gray-300 w-full mt-2"></div> {/* Horizontal line */}
-      <main className="flex flex-1">
-        <div className="flex-1 flex flex-col items-center justify-center border-r-2 border-gray-300">
-          <button
-            onClick={goToDepositCalculator}
-            className="bg-blue-500 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition duration-300 mb-4"
-          >
-            Add Deposit
-          </button>
-          <div className="mt-6 w-full max-w-md">
+      <main className="flex flex-1 p-4">
+        <div className="flex-1 flex flex-col items-center mt-4">
+          <div className="w-full" style={{ maxWidth: '650px' }}>
             {deposits.map((deposit, index) => (
               <DepositCard key={index} deposit={deposit} index={index} onEdit={editDeposit} />
             ))}
           </div>
-        </div>
-        <div className="flex-1 flex flex-col items-center justify-center">
           <button
-            onClick={goToLoanCalculator}
-            className="bg-green-500 text-white px-4 py-2 rounded-lg hover:bg-green-700 transition duration-300 mb-4"
+            onClick={goToDepositCalculator}
+            className="bg-blue-500 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition duration-300 mt-4"
           >
-            Add Loan
+            Add Deposit
           </button>
-          <div className="mt-6 w-full max-w-md">
+        </div>
+        <div className="border-r-2 border-gray-300"></div> {/* Vertical line */}
+        <div className="flex-1 flex flex-col items-center mt-4">
+          <div className="w-full" style={{ maxWidth: '650px' }}>
             {loans.map((loan, index) => (
               <LoanCard key={index} loan={loan} index={index} onEdit={editLoan} />
             ))}
           </div>
+          <button
+            onClick={goToLoanCalculator}
+            className="bg-green-500 text-white px-4 py-2 rounded-lg hover:bg-green-700 transition duration-300 mt-4"
+          >
+            Add Loan
+          </button>
         </div>
       </main>
       <div className="flex flex-col items-center mt-4">
