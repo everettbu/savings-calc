@@ -58,7 +58,7 @@ const Home = () => {
           </div>
           <button
             onClick={goToDepositCalculator}
-            className="bg-primary text-white px-4 py-2 rounded-lg opacity-90 hover:bg-primary-dark hover:shadow-lg transition duration-300 mt-4"
+            className="bg-primary text-white px-4 py-2 rounded-lg opacity-90 hover:bg-primary-dark hover:shadow-lg transition duration-300 mt-4 transform hover:scale-105"
           >
             + Add Deposit
           </button>
@@ -72,7 +72,7 @@ const Home = () => {
           </div>
           <button
             onClick={goToLoanCalculator}
-            className="bg-tertiary text-white px-4 py-2 rounded-lg opacity-90 hover:bg-tertiary-dark hover:shadow-lg transition duration-300 mt-4"
+            className="bg-tertiary text-white px-4 py-2 rounded-lg opacity-90 hover:bg-tertiary-dark hover:shadow-lg transition duration-300 mt-4 transform hover:scale-105"
           >
             + Add Loan
           </button>
