@@ -33,6 +33,12 @@ const AddLoan = () => {
 
   return (
     <div className="min-h-screen flex flex-col items-center bg-gray-100 p-4">
+      <button
+        onClick={() => navigate('/')}
+        className="absolute top-6 left-8 bg-primary bg-opacity-80 text-white py-2 px-4 rounded-full shadow-md hover:bg-primary focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 transition duration-300 transform hover:scale-105 flex items-center"
+      >
+        ← Home
+      </button>
       <h2 className="text-3xl font-semibold mb-6 mt-4">Add Loan Account</h2>
       <div className="bg-white p-6 rounded-lg shadow-lg w-full max-w-md">
         <LoanForm
