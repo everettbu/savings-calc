@@ -36,16 +36,16 @@ const Home = () => {
 
   return (
     <div className="min-h-screen flex flex-col bg-gray-100">
-      <header className="bg-primary text-white text-center py-4 w-full">
-        <h1 className="text-4xl font-bold">Derisq Savings Calculator</h1>
+      <header className="bg-primary text-white text-center py-1 w-full">
+        <h1 className="text-2xl font-bold">Derisq Savings Calculator</h1>
       </header>
       <div className="flex w-full mt-3 text-center items-center">
         <div className="flex-1">
-          <h2 className="text-2xl font-semibold">Deposits</h2>
+          <h2 className="text-3xl font-semibold">Deposits</h2>
         </div>
         <div className="border-r-2 border-gray-300 h-8"></div> {/* Vertical line */}
         <div className="flex-1">
-          <h2 className="text-2xl font-semibold">Loans</h2>
+          <h2 className="text-3xl font-semibold">Loans</h2>
         </div>
       </div>
       <div className="border-b-2 border-gray-300 w-full mt-2"></div> {/* Horizontal line */}
@@ -58,9 +58,9 @@ const Home = () => {
           </div>
           <button
             onClick={goToDepositCalculator}
-            className="bg-blue-500 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition duration-300 mt-4"
+            className="bg-primary text-white px-4 py-2 rounded-lg opacity-90 hover:bg-primary-dark hover:shadow-lg transition duration-300 mt-4"
           >
-            Add Deposit
+            + Add Deposit
           </button>
         </div>
         <div className="border-r-2 border-gray-300"></div> {/* Vertical line */}
@@ -72,16 +72,18 @@ const Home = () => {
           </div>
           <button
             onClick={goToLoanCalculator}
-            className="bg-green-500 text-white px-4 py-2 rounded-lg hover:bg-green-700 transition duration-300 mt-4"
+            className="bg-tertiary text-white px-4 py-2 rounded-lg opacity-90 hover:bg-tertiary-dark hover:shadow-lg transition duration-300 mt-4"
           >
-            Add Loan
+            + Add Loan
           </button>
         </div>
       </main>
-      <div className="flex flex-col items-center mt-4">
-        <h3 className="text-2xl font-semibold">
-          Total Savings: ${totalSavings.toFixed(2)}
-        </h3>
+      <div className="flex flex-col items-center mt-2 mb-4">
+        <div className="border-4 border-secondary bg-white text-black p-4 rounded-lg w-full max-w-md">
+          <h3 className="text-2xl font-semibold text-center">
+            Total Savings: ${totalSavings.toFixed(2)}
+          </h3>
+        </div>
       </div>
     </div>
   );
