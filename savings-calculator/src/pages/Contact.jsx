@@ -9,7 +9,7 @@ const Contact = () => {
             <main className="flex-col flex-1">
                 <div className="justify-center p-10">
                     <div className="flex justify-center">
-                    <a href="https://www.firstcitycu.org/contact/email/" target="_blank">
+                    <a href="https://www.firstcitycu.org/contact/email/" target="_blank" rel="noopener noreferrer">
                         <button className="bg-blue-500 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition duration-300 mb-4 justify-center">
                             Contact via Email
                         </button>

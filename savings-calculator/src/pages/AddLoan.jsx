@@ -3,17 +3,23 @@ import { useNavigate } from 'react-router-dom';
 import LoanForm from '../components/LoanForm';
 import { LoanContext } from '../context/LoanContext';
 import { calculateLoanSavings } from '../utils/loanCalculations';
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const AddLoan = () => {
   const { addLoan } = useContext(LoanContext);
   const [results, setResults] = useState(null);
   const navigate = useNavigate();
+  const goToHome = () => {
+    navigate('/')
+  }
 
   const handleFormSubmit = (values) => {
     const savings = calculateLoanSavings(values);
     const newLoan = { ...values, savings };
     addLoan(newLoan);
     setResults(newLoan);
+    toast.success("Account added to Home");
   };
 
   return (
@@ -45,11 +51,20 @@ const AddLoan = () => {
           Calculate Savings
         </button>
         {results !== null && (
-          <div className="mt-4 text-lg text-green-500">
-            Your savings: ${results.savings.toFixed(2)}
+          <div>
+            <div className="mt-4 text-lg text-green-500">
+              Your savings: ${results.savings.toFixed(2)}
+            </div>
+            <button 
+            onClick={goToHome}
+            className="w-full bg-blue-600 text-white py-2 px-4 rounded-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 transition duration-300 mt-4"
+            >
+              Return to Home
+            </button>
           </div>
         )}
       </div>
+      <ToastContainer />
     </div>
   );
 };

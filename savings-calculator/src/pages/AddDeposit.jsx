@@ -3,17 +3,24 @@ import { useNavigate } from 'react-router-dom';
 import DepositForm from '../components/DepositForm';
 import { DepositContext } from '../context/DepositContext';
 import { calculateDepositSavings } from '../utils/depositCalculations';
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+
 
 const AddDeposit = () => {
   const { addDeposit } = useContext(DepositContext);
   const [results, setResults] = useState(null);
   const navigate = useNavigate();
+  const goToHome = () => {
+    navigate("/")
+  }
 
   const handleFormSubmit = (values) => {
     const savings = calculateDepositSavings(values.balance, values.annualYield);
     const newDeposit = { ...values, savings };
     addDeposit(newDeposit);
     setResults(newDeposit);
+    toast.success('Account added to Home')
   };
 
   return (
@@ -40,11 +47,20 @@ const AddDeposit = () => {
           Calculate Savings
         </button>
         {results !== null && (
-          <div className="mt-4 text-lg text-green-500">
-            Your savings: ${results.savings.toFixed(2)}
+          <div>
+            <div className="mt-4 text-lg text-green-500">
+              Your savings: ${results.savings.toFixed(2)}
+            </div>
+            <button 
+            onClick={goToHome}
+            className="w-full bg-blue-600 text-white py-2 px-4 rounded-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 transition duration-300 mt-4"
+            >
+              Return to Home
+            </button>
           </div>
         )}
       </div>
+      <ToastContainer />
     </div>
   );
 };
