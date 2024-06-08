@@ -3,8 +3,8 @@ import React from 'react';
 const Transfer = () => {
     return(
         <div className="min-h-screen flex flex-col">
-            <header className="bg-primary text-white text-center py-4 w-full">
-                <h1 className="text-4xl font-bold">Transfer Funds to First City Credit Union</h1>
+            <header className="bg-primary text-white text-center py-1 w-full">
+                <h1 className="text-2xl font-bold">Transfer Funds to First City Credit Union</h1>
             </header>
             <main className="flex-col flex-1">
                     <div className="flex justify-center p-10">
