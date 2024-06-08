@@ -8,6 +8,9 @@ const DepositForm = ({ initialValues, onSubmit, inputClass, labelClass, errorCla
     balance: Yup.number().required('Required').min(0, 'Must be positive'),
     annualYield: Yup.number().required('Required').min(0, 'Must be positive').max(100, 'Must be less than 100%'),
   });
+  const numberInputOnWheelPreventChange = (e) => {
+    e.target.blur()
+  }
 
   return (
     <Formik
@@ -27,12 +30,12 @@ const DepositForm = ({ initialValues, onSubmit, inputClass, labelClass, errorCla
           </div>
           <div className="mb-4">
             <label htmlFor="balance" className={labelClass}>Account Balance</label>
-            <Field type="number" name="balance" id="balance" className={`${inputClass} no-spinner`} />
+            <Field type="number" name="balance" id="balance" className={`${inputClass} no-spinner`} onWheel={numberInputOnWheelPreventChange}/>
             <ErrorMessage name="balance" component="div" className={errorClass} />
           </div>
           <div className="mb-4">
             <label htmlFor="annualYield" className={labelClass}>Annual Percentage Rate (%)</label>
-            <Field type="number" name="annualYield" id="annualYield" className={`${inputClass} no-spinner`} />
+            <Field type="number" name="annualYield" id="annualYield" className={`${inputClass} no-spinner`} onWheel={numberInputOnWheelPreventChange}/>
             <ErrorMessage name="annualYield" component="div" className={errorClass} />
           </div>
         </Form>
