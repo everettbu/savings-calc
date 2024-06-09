@@ -38,7 +38,7 @@ const Menu = ({ isDrawerOpen, toggleDrawer, navigate }) => {
         >
           <button
             onClick={toggleDrawer}
-            className="absolute top-2 right-2 text-primary flex items-center justify-center p-2 text-2xl focus:outline-none transition duration-300 rounded-full hover:bg-gray-300"
+            className="absolute top-2 left-2 text-primary flex items-center justify-center p-2 text-2xl focus:outline-none transition duration-300 rounded-full hover:bg-gray-300"
             style={{ width: '36px', height: '36px' }} 
           >
             &times;
