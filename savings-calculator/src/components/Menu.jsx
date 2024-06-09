@@ -51,9 +51,15 @@ const Menu = ({ isDrawerOpen, toggleDrawer, navigate }) => {
                 </button>
               </li>
               <li>
-                <button onClick={() => window.location.href = 'https://app.loanspq.com/xa/xpressApp.aspx?enc=Kw21Wblm1yxpjJabdoZaD9P5Ohrb21U42vf4mi4ehVOHesN2P5T0h5-U4tYLIGz1pbxW5gXLDq4i9XcbQAEpui6QgaQp7OmdIC4KX01JRaLYmxn24WPdjZkK9UMNSPC3'} className="text-primary p-2 text-xl hover:underline">
-                  Open Account
-                </button>
+                <a 
+                href='https://app.loanspq.com/xa/xpressApp.aspx?enc=Kw21Wblm1yxpjJabdoZaD9P5Ohrb21U42vf4mi4ehVOHesN2P5T0h5-U4tYLIGz1pbxW5gXLDq4i9XcbQAEpui6QgaQp7OmdIC4KX01JRaLYmxn24WPdjZkK9UMNSPC3'
+                target="_blank"
+                rel="noopener noreferrer"
+                >
+                  <button className="text-primary p-2 text-xl hover:underline">
+                    Open Account
+                  </button>
+                </a>
               </li>
               <li>
                 <button onClick={() => navigate('/contact')} className="text-primary p-2 text-xl hover:underline">
