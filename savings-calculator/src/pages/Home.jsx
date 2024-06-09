@@ -1,14 +1,16 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { DepositContext } from '../context/DepositContext';
 import { LoanContext } from '../context/LoanContext';
 import DepositCard from '../components/DepositCard';
 import LoanCard from '../components/LoanCard';
+import Menu from '../components/Menu';
 
 const Home = () => {
   const navigate = useNavigate();
   const { deposits } = useContext(DepositContext);
   const { loans } = useContext(LoanContext);
+  const [isDrawerOpen, setIsDrawerOpen] = useState(false);
 
   const goToDepositCalculator = () => {
     navigate('/add-deposit');
@@ -34,11 +36,23 @@ const Home = () => {
     return total + (typeof depositSavings === 'number' ? depositSavings : 0);
   }, 0);
 
+  const toggleDrawer = () => {
+    setIsDrawerOpen(!isDrawerOpen);
+  };
+
   return (
     <div className="min-h-screen flex flex-col bg-gray-100">
-      <header className="bg-primary text-white text-center py-1 w-full">
-        <h1 className="text-2xl font-bold">Derisq Savings Calculator</h1>
+      <header className="bg-primary text-white text-center py-1 w-full relative">
+      <button
+        onClick={toggleDrawer}
+        className="absolute bg-primary text-white rounded-md hover:bg-primary-dark transition duration-300 shadow-md flex items-center justify-center"
+        style={{ top: '0px', left: '10px', width: '40px', height: '40px', fontSize: '1.5rem' }}
+      >
+        ☰
+      </button>
+        <h1 className="text-2xl font-bold text-center">Financial Savings Calculator</h1>
       </header>
+      <Menu isDrawerOpen={isDrawerOpen} toggleDrawer={toggleDrawer} navigate={navigate} />
       <div className="flex w-full mt-3 text-center items-center">
         <div className="flex-1">
           <h2 className="text-3xl font-semibold">Deposits</h2>
