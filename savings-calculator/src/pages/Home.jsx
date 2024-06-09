@@ -53,11 +53,13 @@ const Home = () => {
         ☰
       </button>
         <h1 className="text-2xl font-bold text-center">Financial Savings Calculator</h1>
-        <img
-          src={logo}
-          alt="Logo"
-          className="absolute top-1 right-5 w-8 h-8 object-contain"
-        />
+        <a href='https://www.firstcitycu.org/' target="_blank" rel="noopener noreferrer">
+          <img
+            src={logo}
+            alt="Logo"
+            className="absolute top-1 right-5 w-8 h-8 object-contain"
+          />
+        </a>
       </header>
       <Menu isDrawerOpen={isDrawerOpen} toggleDrawer={toggleDrawer} navigate={navigate} />
       <div className="flex w-full mt-3 text-center items-center">

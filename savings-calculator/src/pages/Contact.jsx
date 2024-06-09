@@ -1,11 +1,19 @@
 import React from 'react';
 import ContactForm from '../components/ContactForm';
+import logo from '../assets/firstcity.png';
 
 const Contact = () => {
     return(
         <div className="min-h-screen flex flex-col items-center">
             <header className="bg-primary text-white text-center py-1 w-full">
                 <h1 className="text-2xl font-bold">Contact First City</h1>
+                <a href='https://www.firstcitycu.org/' target="_blank" rel="noopener noreferrer">
+                    <img
+                    src={logo}
+                    alt="Logo"
+                    className="absolute top-1 right-5 w-8 h-8 object-contain"
+                    />
+                </a>
             </header>
             <div className="border-4 border-secondary rounded-sm flex justify-center mt-10">
                 Call: (213) 482-3477 (if from 213 or adjacent area codes) or (800) 944-2200
