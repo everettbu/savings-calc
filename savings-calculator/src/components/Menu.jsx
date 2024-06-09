@@ -62,7 +62,7 @@ const Menu = ({ isDrawerOpen, toggleDrawer, navigate }) => {
                 </a>
               </li>
               <li>
-                <button onClick={() => navigate('/contact')} className="text-primary p-2 text-xl hover:underline">
+                <button onClick={() => {navigate('/contact'); toggleDrawer(); }} className="text-primary p-2 text-xl hover:underline">
                   Contact
                 </button>
               </li>
