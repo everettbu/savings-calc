@@ -5,6 +5,8 @@ import { LoanContext } from '../context/LoanContext';
 import DepositCard from '../components/DepositCard';
 import LoanCard from '../components/LoanCard';
 import Menu from '../components/Menu';
+import logo from '../assets/firstcity.png';
+
 
 const Home = () => {
   const navigate = useNavigate();
@@ -46,20 +48,25 @@ const Home = () => {
       <button
         onClick={toggleDrawer}
         className="absolute bg-primary text-white rounded-md hover:bg-primary-dark transition duration-300 shadow-md flex items-center justify-center"
-        style={{ top: '0px', left: '10px', width: '40px', height: '40px', fontSize: '1.5rem' }}
+        style={{ top: '-1px', left: '10px', width: '40px', height: '40px', fontSize: '1.5rem' }}
       >
         ☰
       </button>
         <h1 className="text-2xl font-bold text-center">Financial Savings Calculator</h1>
+        <img
+          src={logo}
+          alt="Logo"
+          className="absolute top-1 right-5 w-8 h-8 object-contain"
+        />
       </header>
       <Menu isDrawerOpen={isDrawerOpen} toggleDrawer={toggleDrawer} navigate={navigate} />
       <div className="flex w-full mt-3 text-center items-center">
         <div className="flex-1">
-          <h2 className="text-3xl font-semibold">Deposits</h2>
+          <h2 className="text-3xl font-semibold ml-4">Deposits</h2>
         </div>
         <div className="border-r-2 border-gray-300 h-8"></div> {/* Vertical line */}
         <div className="flex-1">
-          <h2 className="text-3xl font-semibold">Loans</h2>
+          <h2 className="text-3xl font-semibold mr-5">Loans</h2>
         </div>
       </div>
       <div className="border-b-2 border-gray-300 w-full mt-2"></div> {/* Horizontal line */}
