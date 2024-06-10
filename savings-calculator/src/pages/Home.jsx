@@ -61,13 +61,13 @@ const Home = () => {
         </a>
       </header>
       <Menu isDrawerOpen={isDrawerOpen} toggleDrawer={toggleDrawer} navigate={navigate} />
-      <div className={`flex w-full mt-3 text-center items-center ${isDrawerOpen ? 'pointer-events-none' : ''}`}>
-        <div className="flex-1">
-          <h2 className="text-3xl font-semibold ml-4">Deposits</h2>
+      <div className={`flex w-full mt-3 items-center ${isDrawerOpen ? 'pointer-events-none' : ''}`}>
+        <div className="flex-1 flex justify-center">
+          <h2 className="text-3xl font-semibold">Deposits</h2>
         </div>
-        <div className="border-r-2 border-gray-300 h-8"></div> {/* Vertical line */}
-        <div className="flex-1">
-          <h2 className="text-3xl font-semibold mr-5">Loans</h2>
+        <div className="w-0.5 bg-gray-300 h-8"></div> {/* Vertical line */}
+        <div className="flex-1 flex justify-center">
+          <h2 className="text-3xl font-semibold">Loans</h2>
         </div>
       </div>
       <div className="border-b-2 border-gray-300 w-full mt-2"></div> {/* Horizontal line */}
@@ -85,7 +85,7 @@ const Home = () => {
             + Add Deposit
           </button>
         </div>
-        <div className="border-r-2 border-gray-300"></div> {/* Vertical line */}
+        <div className="w-0.5 bg-gray-300 mx-4"></div> {/* Vertical line */}
         <div className="flex-1 flex flex-col items-center mt-4">
           <div className="w-full overflow-y-auto" style={{ maxWidth: '650px', maxHeight: '410px' }}>
             {loans.map((loan, index) => (

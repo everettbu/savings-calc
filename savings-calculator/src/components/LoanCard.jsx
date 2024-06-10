@@ -10,7 +10,7 @@ const LoanCard = ({ loan, index, onEdit }) => {
       <p>Balance: ${loan.balance}</p>
       <p>Interest Rate: {loan.interestRate}%</p>
       <div className="relative">
-        <div className="absolute right-0 top-0 transform -translate-y-11 bg-secondary text-white font-bold p-2 rounded opacity-75 group-hover:opacity-100 transition-opacity duration-300 border-2 border-secondary" style={{ maxWidth: '200px' }}>
+        <div className="mt-2 bg-secondary text-white font-bold p-2 rounded opacity-75 group-hover:opacity-100 transition-opacity duration-300 border-2 border-secondary md:absolute md:right-0 md:top-0 md:transform md:-translate-y-11 md:mt-0">
           Savings: ${typeof loan.savings === 'number' ? loan.savings.toFixed(2) : 'N/A'}
         </div>
       </div>
