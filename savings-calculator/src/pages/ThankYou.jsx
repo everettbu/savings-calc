@@ -32,7 +32,7 @@ const ThankYou = () => {
             <div>
                 <button
                 onClick={goToHome}
-                className='bg-tertiary text-white px-4 py-2 rounded-lg opacity-90 hover:bg-primary-dark hover:shadow-lg transition duration-300 mt-20 transform hover:scale-105'
+                className='bg-tertiary text-white px-4 py-2 rounded-lg opacity-90 hover:bg-tertiary-dark hover:shadow-lg transition duration-300 mt-20 transform hover:scale-105'
                 >
                     Return to Home
                 </button>

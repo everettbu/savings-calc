@@ -36,10 +36,17 @@ const Contact = () => {
                 </a>
             </header>
             <Menu isDrawerOpen={isDrawerOpen} toggleDrawer={toggleDrawer} navigate={navigate} />
-            <div className="border-4 border-secondary rounded-sm flex justify-center mt-10">
-                Call: (213) 482-3477 (if from 213 or adjacent area codes) or (800) 944-2200
+            <div className='text-2xl font-bold flex mt-10'>
+                    Call
+                </div>
+            <div className="border-4 border-black rounded-lg flex flex-col justify-center mt-2 items-center mb-5 p-2">
+                (213) 482-3477 or (800) 944-2200
             </div>
-            <main className="flex-col flex-1">
+            OR
+            <div className='font-bold text-2xl mt-5'>
+                Email
+            </div>
+            <main className="flex-col flex-1 mt-2">
             <div className="bg-white p-6 rounded-lg shadow-lg w-full max-w-md">
                     <ContactForm
                     initialValues={{
@@ -61,7 +68,7 @@ const Contact = () => {
                     <button
                     type="submit"
                     form="contact-form"
-                    className="w-full bg-indigo-600 text-white py-2 px-4 rounded-md hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 transition duration-300 mt-4"
+                    className="w-full bg-blue-600 text-white py-2 px-4 rounded-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 transition duration-300 mt-4"
                     >
                         Send
                     </button>
