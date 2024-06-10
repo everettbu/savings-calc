@@ -6,7 +6,8 @@ const ContactForm = ({ initialValues, onSubmit, inputClass, labelClass, errorCla
   const validationSchema = Yup.object({
     inquiryType: Yup.string().oneOf(['Technical Questions', 'Consumer Loans', 'General Information', 'Employment', 'Information Sharing Opt-Out', 'Real Estate Loans'], 'Invalid category').required('Required'),
     userName: Yup.string().required('Required'),
-    email: Yup.string().matches(/^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/, 'Email not valid').required('Required')
+    email: Yup.string().matches(/^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/, 'Email not valid').required('Required'),
+    comment: Yup.string().required('Required')
   });
 
   return (
