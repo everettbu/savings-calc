@@ -57,7 +57,7 @@ const EditDeposit = () => {
         </button>
         {results !== null && (
           <div className="mt-4 text-lg text-green-500">
-            Your savings: ${results.savings.toFixed(2)}
+            Your savings: ${results.savings.toLocaleString(undefined, {maximumFractionDigits:2})}
           </div>
         )}
       </div>
