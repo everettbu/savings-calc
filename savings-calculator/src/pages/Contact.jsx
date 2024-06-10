@@ -73,7 +73,11 @@ const Contact = () => {
                         Send
                     </button>
                 </div>
-                
+                <div className='w-full max-w-md text-sm mt-2 mb-2'>
+                In most cases, we will reply to your email within two working days. Please note that this is NOT a secured email. 
+                DO NOT include personal information such as account numbers, social security numbers, or driver license numbers in emails sent through our web site 
+                (outside of FirstCity online banking and bill payment login areas, which are secure).
+                </div>
             </main>
         </div>    
     )
