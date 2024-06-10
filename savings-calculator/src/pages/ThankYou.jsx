@@ -38,7 +38,7 @@ const ThankYou = () => {
       <Menu isDrawerOpen={isDrawerOpen} toggleDrawer={toggleDrawer} navigate={navigate} />
       <CiCircleCheck size={'80px'} style={{ marginTop: '140px' }} fill='green' />
       <div className='flex text-4xl' style={{ marginTop: '30px' }}>
-        Thank you for your inquiry!
+        Thank you!
       </div>
       <div className='flex text-xl' style={{ marginTop: '10px' }}>
         A copy has been sent to your email.

@@ -10,7 +10,8 @@ const LoanCard = ({ loan, index, onEdit }) => {
       <p>Balance: ${loan.balance.toLocaleString(undefined, {maximumFractionDigits:2})}</p>
       <p>Interest Rate: {loan.interestRate}%</p>
       <div className="relative">
-        <div className="mt-2 bg-secondary text-white font-bold p-2 rounded opacity-75 group-hover:opacity-100 transition-opacity duration-300 border-2 border-secondary md:absolute md:right-0 md:top-0 md:transform md:-translate-y-11 md:mt-0">
+        <div className="mt-2 bg-secondary text-white font-bold p-2 rounded opacity-75 group-hover:opacity-100 transition-opacity duration-300 border-2 border-secondary md:absolute md:right-0 md:top-0 md:transform md:-translate-y-11 md:mt-0 md:inline-block"
+             style={{ display: 'inline-block' }}>
             Savings: ${typeof loan.savings === 'number' ? loan.savings.toLocaleString(undefined, {maximumFractionDigits:2}) : 'N/A'}
         </div>
       </div>

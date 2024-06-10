@@ -23,7 +23,7 @@ const ContactForm = ({ initialValues, onSubmit, inputClass, labelClass, errorCla
           <div className="mb-4">
             <label htmlFor="inquiryType" className={labelClass}>Inquiry Category</label>
             <Field as="select" name="inquiryType" id="inquiryType" className={inputClass}>
-              <option value="" label="Select inquiry category" />
+              <option value="" label="Select Category" />
               <option value="Technical Questions" label="Technical Questions" />
               <option value="Consumer Loans" label="Consumer Loans" />
               <option value="General Information" label="General Information" />

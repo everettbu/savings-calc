@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext, useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { DepositContext } from '../context/DepositContext';
 import { LoanContext } from '../context/LoanContext';
@@ -12,6 +12,19 @@ const Home = () => {
   const { deposits } = useContext(DepositContext);
   const { loans } = useContext(LoanContext);
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
+  const [windowWidth, setWindowWidth] = useState(window.innerWidth);
+
+  useEffect(() => {
+    const handleResize = () => {
+      setWindowWidth(window.innerWidth);
+    };
+
+    window.addEventListener('resize', handleResize);
+
+    return () => {
+      window.removeEventListener('resize', handleResize);
+    };
+  }, []);
 
   const goToDepositCalculator = () => {
     navigate('/add-deposit');
@@ -51,7 +64,7 @@ const Home = () => {
         >
           ☰
         </button>
-        <h1 className="text-2xl font-bold text-center">Financial Savings Calculator</h1>
+        <h1 className="text-2xl font-bold text-center">{windowWidth < 430 ? 'Savings Calculator' : 'Financial Savings Calculator'}</h1>
         <a href='https://www.firstcitycu.org/' target="_blank" rel="noopener noreferrer">
           <img
             src={logo}
@@ -73,7 +86,7 @@ const Home = () => {
       <div className="border-b-2 border-gray-300 w-full mt-2"></div> {/* Horizontal line */}
       <main className="flex flex-1 p-4">
         <div className="flex-1 flex flex-col items-center mt-4">
-          <div className="w-full overflow-y-auto" style={{ maxWidth: '650px', maxHeight: '410px' }}>
+          <div className="w-full overflow-y-auto" style={{ maxWidth: '650px', maxHeight: 'calc(100vh - 250px)' }}>
             {deposits.map((deposit, index) => (
               <DepositCard key={index} deposit={deposit} index={index} onEdit={editDeposit} />
             ))}
@@ -87,7 +100,7 @@ const Home = () => {
         </div>
         <div className="w-0.5 bg-gray-300 mx-4"></div> {/* Vertical line */}
         <div className="flex-1 flex flex-col items-center mt-4">
-          <div className="w-full overflow-y-auto" style={{ maxWidth: '650px', maxHeight: '410px' }}>
+          <div className="w-full overflow-y-auto" style={{ maxWidth: '650px', maxHeight: 'calc(100vh - 250px)' }}>
             {loans.map((loan, index) => (
               <LoanCard key={index} loan={loan} index={index} onEdit={editLoan} />
             ))}
