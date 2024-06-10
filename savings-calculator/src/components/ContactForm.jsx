@@ -2,15 +2,16 @@ import React from 'react';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
 
-const ContactForm = ({ onSubmit, inputClass, labelClass, errorClass, formClass }) => {
+const ContactForm = ({ initialValues, onSubmit, inputClass, labelClass, errorClass, formClass }) => {
   const validationSchema = Yup.object({
-    inquiryType: Yup.string().required('Required'),
-    name: Yup.number().required('Required'),
-    email: Yup.number().required('Required'),
+    inquiryType: Yup.string().oneOf(['Technical Questions', 'Consumer Loans', 'General Information', 'Employment', 'Information Sharing Opt-Out', 'Real Estate Loans'], 'Invalid category').required('Required'),
+    userName: Yup.string().required('Required'),
+    email: Yup.string().required('Required')
   });
 
   return (
     <Formik
+      initialValues={initialValues}
       validationSchema={validationSchema}
       onSubmit={(values, { setSubmitting }) => {
         onSubmit(values);
@@ -33,13 +34,13 @@ const ContactForm = ({ onSubmit, inputClass, labelClass, errorClass, formClass }
             <ErrorMessage name="inquiryType" component="div" className={errorClass} />
           </div>
           <div className="mb-4">
-            <label htmlFor="name" className={labelClass}>Name</label>
-            <Field type="text" name="name" id="name" className={`${inputClass} no-spinner`} />
-            <ErrorMessage name="name" component="div" className={errorClass} />
+            <label htmlFor="userName" className={labelClass}>Name</label>
+            <Field type="text" name="userName" id="userName" className={inputClass} />
+            <ErrorMessage name="userName" component="div" className={errorClass} />
           </div>
           <div className="mb-4">
             <label htmlFor="email" className={labelClass}>Email</label>
-            <Field type="text" name="email" id="email" className={`${inputClass} no-spinner`} />
+            <Field type="text" name="email" id="email" className={inputClass} />
             <ErrorMessage name="email" component="div" className={errorClass} />
           </div>
           <div className="mb-4">

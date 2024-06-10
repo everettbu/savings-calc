@@ -9,6 +9,7 @@ import { DepositProvider } from './context/DepositContext';
 import { LoanProvider } from './context/LoanContext';
 import Contact from './pages/Contact';
 import Transfer from './pages/Transfer';
+import ThankYou from './pages/ThankYou';
 
 function App() {
   return (
@@ -23,6 +24,7 @@ function App() {
             <Route path="/edit-loan/:id" element={<EditLoan />} />
             <Route path="/contact" element={<Contact />} />
             <Route path="/transfer" element={<Transfer />} />
+            <Route path="/thank-you" element={<ThankYou />} />
           </Routes>
         </Router>
       </LoanProvider>

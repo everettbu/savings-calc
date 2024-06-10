@@ -11,6 +11,10 @@ const Contact = () => {
     const toggleDrawer = () => {
         setIsDrawerOpen(!isDrawerOpen);
     };
+
+    const handleFormSubmit = () => {
+        navigate('/thank-you')
+    }
     
     return(
         <div className="min-h-screen flex flex-col items-center">
@@ -38,16 +42,29 @@ const Contact = () => {
             <main className="flex-col flex-1">
             <div className="bg-white p-6 rounded-lg shadow-lg w-full max-w-md">
                     <ContactForm
+                    initialValues={{
+                        inquiryType: '',
+                        userName: '',
+                        email: '',
+                        streetAddress: '',
+                        city: '',
+                        state: '',
+                        zip: '',
+                        comment: ''
+                    }}
                     formClass="space-y-6"
                     inputClass="mt-1 p-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm w-full"
                     labelClass="block text-sm font-medium text-gray-700"
                     errorClass="text-red-500 text-sm mt-1"
+                    onSubmit={handleFormSubmit}
                     />
                     <button
+                    type="submit"
+                    form="contact-form"
                     className="w-full bg-indigo-600 text-white py-2 px-4 rounded-md hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 transition duration-300 mt-4"
-                >
-                    Send
-                </button>
+                    >
+                        Send
+                    </button>
                 </div>
                 
             </main>
