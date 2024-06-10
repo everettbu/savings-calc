@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import ContactForm from '../components/ContactForm';
-import logo from '../assets/firstcity.png';
+import logo from '../assets/logoicon.png';
 import Menu from '../components/Menu';
 
 const Contact = () => {
