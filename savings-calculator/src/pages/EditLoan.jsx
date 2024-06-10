@@ -2,7 +2,7 @@ import React, { useContext, useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import LoanForm from '../components/LoanForm';
 import { LoanContext } from '../context/LoanContext';
-import { calculateLoanSavings } from '../utils/loanCalculations';
+import { calculateLoanSavings, checkAccuracy } from '../utils/loanCalculations';
 
 const EditLoan = () => {
   const { loans, updateLoan, deleteLoan } = useContext(LoanContext);
@@ -10,6 +10,7 @@ const EditLoan = () => {
   const loan = loans[parseInt(id, 10)];
   const [results, setResults] = useState(null);
   const navigate = useNavigate();
+  const [safeguard, setSafeguard] = useState(null);
 
   const handleFormSubmit = (values) => {
     const savings = calculateLoanSavings(values);
@@ -17,6 +18,7 @@ const EditLoan = () => {
 
     updateLoan(parseInt(id, 10), updatedLoan);
     setResults(updatedLoan);
+    setSafeguard(checkAccuracy(values));
   };
 
   const handleDelete = () => {
@@ -56,8 +58,20 @@ const EditLoan = () => {
           Update Savings
         </button>
         {results !== null && (
-          <div className="mt-4 text-lg text-green-500">
-            Your savings: ${results.savings.toLocaleString(undefined, {maximumFractionDigits:2})}
+          <div>
+            <div className="mt-4 text-lg text-green-500">
+              Your savings: {results.savings.toLocaleString(undefined, {currency:'USD', style:'currency', currencyDisplay:'narrowSymbol'})}
+            </div>
+            {safeguard[0] !== null && (
+              <div>
+                {safeguard[0]}
+              </div>
+            )}
+            {safeguard[1] !== null && (
+              <div>
+                {safeguard[1]}
+              </div>
+            )}
           </div>
         )}
       </div>

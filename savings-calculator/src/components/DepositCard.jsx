@@ -7,12 +7,12 @@ const DepositCard = ({ deposit, index, onEdit }) => {
       onClick={() => onEdit(index)}
     >
       <h3 className="text-xl font-semibold">{deposit.bank} Deposit Account</h3>
-      <p>Balance: ${deposit.balance.toLocaleString(undefined, {maximumFractionDigits:2})}</p>
+      <p>Balance: {deposit.balance.toLocaleString(undefined, {currency:'USD', style:'currency', currencyDisplay:'narrowSymbol'})}</p>
       <p>APR: {deposit.annualYield}%</p>
       <div className="relative">
         <div className="mt-2 bg-secondary text-white font-bold p-2 rounded opacity-75 group-hover:opacity-100 transition-opacity duration-300 border-2 border-secondary md:absolute md:right-0 md:top-0 md:transform md:-translate-y-11 md:mt-0 md:inline-block"
              style={{ display: 'inline-block' }}>
-            Savings: ${typeof deposit.savings === 'number' ? deposit.savings.toLocaleString(undefined, {maximumFractionDigits:2}) : 'N/A'}
+            Savings: {typeof deposit.savings === 'number' ? deposit.savings.toLocaleString(undefined, {currency:'USD', style:'currency', currencyDisplay:'narrowSymbol'}) : 'N/A'}
         </div>
       </div>
     </div>

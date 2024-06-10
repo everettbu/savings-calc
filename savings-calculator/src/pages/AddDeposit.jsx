@@ -62,7 +62,7 @@ const AddDeposit = () => {
         {results !== null && (
           <div>
             <div className="mt-4 text-lg text-green-500">
-              Your savings: ${results.savings.toLocaleString(undefined, {maximumFractionDigits:2})}
+              Your savings: {results.savings.toLocaleString(undefined, {currency:'USD', style:'currency', currencyDisplay:'narrowSymbol'})}
             </div>
           </div>
         )}

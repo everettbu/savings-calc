@@ -116,7 +116,7 @@ const Home = () => {
       <div className="flex flex-col items-center mt-2 mb-4">
         <div className="border-4 border-secondary bg-white text-black p-4 rounded-lg w-full max-w-md">
           <h3 className="text-2xl font-semibold text-center">
-            Total Savings: ${totalSavings.toLocaleString(undefined, {maximumFractionDigits:2})}
+            Total Savings: {totalSavings.toLocaleString(undefined, {style:'currency', currency:'USD', currencyDisplay:'narrowSymbol'})}
           </h3>
         </div>
       </div>
