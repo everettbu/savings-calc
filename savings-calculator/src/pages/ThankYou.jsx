@@ -1,5 +1,5 @@
 import React from 'react';
-import logo from '../assets/firstcity.png';
+import logo from '../assets/logoicon.png';
 import { CiCircleCheck } from "react-icons/ci";
 import { useNavigate } from 'react-router-dom';
 
