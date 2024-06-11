@@ -118,7 +118,7 @@ const Home = () => {
       <div className="flex flex-col items-center mt-2">
         <div className="border-t-2 border-l-2 border-r-2 border-black rounded-t-lg bg-secondary text-white p-4 w-full max-w-md">
           <h3 className="text-2xl font-semibold text-center">
-            Total Savings: {totalSavings.toLocaleString(undefined, {style:'currency', currency:'USD', currencyDisplay:'narrowSymbol'})}
+            Total Savings: {(Math.round((totalSavings + Number.EPSILON) *100)/100).toLocaleString(undefined, {style:'currency', currency:'USD', currencyDisplay:'narrowSymbol'})}
           </h3>
         </div>
       </div>
