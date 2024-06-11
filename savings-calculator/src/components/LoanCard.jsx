@@ -10,7 +10,7 @@ const LoanCard = ({ loan, index, onEdit }) => {
       <p>Balance: {loan.balance.toLocaleString(undefined, {currency:'USD', style:'currency', currencyDisplay:'narrowSymbol'})}</p>
       <p>Interest Rate: {loan.interestRate}%</p>
       <div className="relative">
-        <div className="mt-2 bg-secondary-light text-white font-bold p-2 rounded group-hover:bg-secondary transition-opacity duration-300 md:absolute md:right-0 md:top-0 md:transform md:-translate-y-11 md:mt-0 md:inline-block"
+        <div className="mt-2 bg-secondary-light text-white border border-secondary font-bold p-2 rounded group-hover:bg-secondary transition-opacity duration-300 md:absolute md:right-0 md:top-0 md:transform md:-translate-y-11 md:mt-0 md:inline-block"
              style={{ display: 'inline-block' }}>
             Savings: {typeof loan.savings === 'number' ? loan.savings.toLocaleString(undefined, {currency:'USD', style:'currency', currencyDisplay:'narrowSymbol'}) : 'N/A'}
         </div>
