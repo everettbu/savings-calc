@@ -4,11 +4,11 @@ export const calculateLoanSavings = (values) => {
   let { loanType, balance, interestRate, monthlyPayment, monthsLeft, vehicleModelAge } = values; 
   const annualInterestRate = interestRate / 100;
   const currentRemainingLoanValue = monthlyPayment * monthsLeft;
-
+  console.log('CurrRemVal: ', currentRemainingLoanValue)
   let savingsIncrease = 0;
 
-  console.log('Starting calculation...');
-  console.log('loanType:', loanType);
+  //console.log('Starting calculation...');
+  //console.log('loanType:', loanType);
 
   if (loanType === 'Auto') {
     console.log('Auto loan calculations...');
@@ -29,14 +29,16 @@ export const calculateLoanSavings = (values) => {
       console.error('Invalid vehicle model age:', vehicleModelAge);
     }
   } else if (loanType === 'Personal') {
-    console.log('Personal loan calculations...');
+    //console.log('Personal loan calculations...');
     for (const rate of loan_info.personal.rates) {
-      console.log('Rate:', rate);
+      //console.log('Rate:', rate);
       if (rate[0] <= monthsLeft && monthsLeft <= rate[1]) {
         const r = rate[2] / 12;
         const divisor = ((1 + r) ** monthsLeft - 1) / (r * (1 + r) ** monthsLeft);
         const newMonthlyPayment = balance / divisor;
         const newTotalValue = newMonthlyPayment * monthsLeft;
+        console.log('FCCU Monthly:', newMonthlyPayment);
+        console.log('FCCU Total:', newTotalValue);
         savingsIncrease = currentRemainingLoanValue - newTotalValue;
         break;
       }
@@ -51,9 +53,11 @@ export const checkAccuracy = (vals) => {
   let { loanType, balance, interestRate, monthlyPayment, monthsLeft, vehicleModelAge } = vals;
   const annualInterestRate = interestRate / 100;
   const currentRemainingLoanValue = monthlyPayment * monthsLeft;
-  const monthlyRate = annualInterestRate/12
-  const aprRemVal = monthsLeft*(balance / (((1 + monthlyRate) ** monthsLeft - 1) / (monthlyRate * (1 + monthlyRate) ** monthsLeft))).toFixed(2);
-  const match = aprRemVal.toFixed(2) === currentRemainingLoanValue.toFixed(2) ? null : "*Monthly Payment and Interest Rate do not match";
+  const monthlyRate = annualInterestRate/12;
+  const aprRemVal = monthsLeft*(balance / (((1 + monthlyRate) ** monthsLeft - 1) / (monthlyRate * (1 + monthlyRate) ** monthsLeft)));
+  const aprRemValRounded = Math.round((aprRemVal + Number.EPSILON) * 100) / 100;
+  console.log('APRRemVal: ', aprRemValRounded);
+  const match = aprRemValRounded >= currentRemainingLoanValue || aprRemValRounded <= currentRemainingLoanValue+1 ? null : "*Monthly Payment and Interest Rate do not match";
   const tooMuch = loanType === 'Personal' && balance > 30000 ? "*Personal loans cannot exceed $30k at First City" : null;
   return [match, tooMuch];
 }
