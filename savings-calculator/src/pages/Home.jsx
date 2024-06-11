@@ -97,7 +97,7 @@ const Home = () => {
             onClick={goToDepositCalculator}
             className="bg-tertiary text-white px-4 py-2 rounded-lg opacity-90 hover:bg-tertiary-dark hover:shadow-lg transition duration-300 mt-4 transform hover:scale-105"
           >
-            + Add Deposit
+            + Add Account
           </button>
         </div>
         <div className="w-0.5 bg-slate-400 mx-4"></div> {/* Vertical line */}
@@ -111,15 +111,18 @@ const Home = () => {
             onClick={goToLoanCalculator}
             className="bg-tertiary text-white px-4 py-2 rounded-lg opacity-90 hover:bg-tertiary-dark hover:shadow-lg transition duration-300 mt-4 transform hover:scale-105"
           >
-            + Add Loan
+            + Add Account
           </button>
         </div>
       </main>
       <div className="flex flex-col items-center mt-2">
-        <div className="border-t-2 border-l-2 border-r-2 border-secondary-dark rounded-t-lg bg-secondary text-white p-4 w-full max-w-md">
+        <div className="border-t-2 border-l-2 border-r-2 border-secondary-dark rounded-t-lg bg-secondary text-white p-2 w-full max-w-sm">
           <h3 className="text-2xl font-semibold text-center">
-            Total Savings: {(Math.round((totalSavings + Number.EPSILON) *100)/100).toLocaleString(undefined, {style:'currency', currency:'USD', currencyDisplay:'narrowSymbol'})}
+            Total Savings with First City Credit Union: {(Math.round((totalSavings + Number.EPSILON) *100)/100).toLocaleString(undefined, {style:'currency', currency:'USD', currencyDisplay:'narrowSymbol'})}
           </h3>
+          {/* <p style={{fontSize: '0.6rem'}} className="text-center">
+            Your savings with First City Credit Union are federally insured up to $250,000
+          </p> */}
         </div>
       </div>
     </div>
