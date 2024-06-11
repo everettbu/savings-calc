@@ -57,7 +57,7 @@ export const checkAccuracy = (vals) => {
   const aprRemVal = monthsLeft*(balance / (((1 + monthlyRate) ** monthsLeft - 1) / (monthlyRate * (1 + monthlyRate) ** monthsLeft)));
   const aprRemValRounded = Math.round((aprRemVal + Number.EPSILON) * 100) / 100;
   console.log('APRRemVal: ', aprRemValRounded);
-  const match = aprRemValRounded >= currentRemainingLoanValue || aprRemValRounded <= currentRemainingLoanValue+1 ? null : "*Monthly Payment and Interest Rate do not match";
+  const match = aprRemValRounded >= currentRemainingLoanValue - 1 && aprRemValRounded <= currentRemainingLoanValue+1 ? null : "*Monthly Payment and Interest Rate do not match";
   const tooMuch = loanType === 'Personal' && balance > 30000 ? "*Personal loans cannot exceed $30k at First City" : null;
   return [match, tooMuch];
 }
