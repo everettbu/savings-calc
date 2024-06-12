@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext, useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import DepositForm from '../components/DepositForm';
 import { DepositContext } from '../context/DepositContext';
@@ -6,12 +6,25 @@ import { calculateDepositSavings } from '../utils/depositCalculations';
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
-
 const AddDeposit = () => {
   const { deposits, addDeposit, updateDeposit } = useContext(DepositContext);
   const [results, setResults] = useState(null);
   const [editingIndex, setEditingIndex] = useState(null);
+  const [windowWidth, setWindowWidth] = useState(window.innerWidth);
   const navigate = useNavigate();
+
+  useEffect(() => {
+    const handleResize = () => {
+      setWindowWidth(window.innerWidth);
+    };
+
+    window.addEventListener('resize', handleResize);
+
+    return () => {
+      window.removeEventListener('resize', handleResize);
+    };
+  }, []);
+
   const goToHome = () => {
     navigate("/");
   };
@@ -24,7 +37,7 @@ const AddDeposit = () => {
       toast.success('Account updated on Home');
     } else {
       addDeposit(newDeposit);
-      setEditingIndex(deposits.length); // Set the editing index to the newly added deposit
+      setEditingIndex(deposits.length);
       toast.success('Account added to Home');
     }
     setResults(newDeposit);
@@ -33,12 +46,15 @@ const AddDeposit = () => {
   return (
     <div className="min-h-screen flex flex-col items-center bg-gray-100 p-4">
       <button
-        onClick={() => navigate('/')}
-        className="absolute top-6 left-8 bg-primary bg-opacity-80 text-white py-2 px-4 rounded-full shadow-md hover:bg-primary focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 transition duration-300 transform hover:scale-105 flex items-center"
+        onClick={goToHome}
+        className={`absolute top-6 left-6 bg-primary text-white py-2 px-4 rounded-full shadow-md hover:bg-primary focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 transition duration-300 transform hover:scale-105 flex items-center ${windowWidth < 560 ? 'w-10 h-10 p-0' : ''}`}
+        style={{ paddingLeft: windowWidth < 560 ? '0.7rem' : '' }}
       >
-        ← Home
+        {windowWidth < 560 ? '←' : '← Home'}
       </button>
-      <h2 className="text-3xl font-semibold mb-6 mt-4">Add Deposit Account</h2>
+      <h2 className="text-3xl font-semibold mb-6 mt-4">
+        {windowWidth < 430 ? 'Add Deposit' : 'Add Deposit Account'}
+      </h2>
       <div className="bg-white p-6 rounded-lg shadow-lg w-full max-w-md">
         <DepositForm
           initialValues={{

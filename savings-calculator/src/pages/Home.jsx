@@ -76,12 +76,12 @@ const Home = () => {
       <Menu isDrawerOpen={isDrawerOpen} toggleDrawer={toggleDrawer} navigate={navigate} />
       <div className={`flex w-full items-start ${isDrawerOpen ? 'pointer-events-none' : ''}`} style={{ marginTop: '-1px' }}>
         <div className="flex-1 flex justify-center">
-          <div className="bg-slate-400 w-full p-2 shadow-none text-center rounded-b-md" style={{ marginBottom: '-1rem', paddingBottom: '1rem', marginLeft: '15px', marginRight: '15px' }}>
+          <div className="bg-slate-400 w-full p-2 shadow-none text-center rounded-md" style={{ marginTop: '.7rem', marginBottom: '-1rem', marginLeft: '15px', marginRight: '15px' }}>
             <h2 className="text-3xl font-semibold">Deposits</h2>
           </div>
         </div>
         <div className="flex-1 flex justify-center">
-          <div className="bg-slate-400 w-full  p-2 shadow-none text-center rounded-b-md" style={{ marginBottom: '-1rem', paddingBottom: '1rem', marginLeft: '15px', marginRight: '15px' }}>
+          <div className="bg-slate-400 w-full  p-2 shadow-none text-center rounded-md" style={{ marginTop: '.7rem', marginBottom: '-1rem', marginLeft: '15px', marginRight: '15px' }}>
             <h2 className="text-3xl font-semibold">Loans</h2>
           </div>
         </div>
@@ -118,7 +118,7 @@ const Home = () => {
       <div className="flex flex-col items-center mt-2">
         <div className="border-t-2 border-l-2 border-r-2 border-secondary-dark rounded-t-lg bg-secondary text-white p-2 w-full max-w-sm">
           <h3 className="text-2xl font-semibold text-center">
-            Total Savings with First City Credit Union: {(Math.round((totalSavings + Number.EPSILON) *100)/100).toLocaleString(undefined, {style:'currency', currency:'USD', currencyDisplay:'narrowSymbol'})}
+            Total Savings with First City: {(Math.round((totalSavings + Number.EPSILON) *100)/100).toLocaleString(undefined, {style:'currency', currency:'USD', currencyDisplay:'narrowSymbol'})}
           </h3>
           {/* <p style={{fontSize: '0.6rem'}} className="text-center">
             Your savings with First City Credit Union are federally insured up to $250,000
