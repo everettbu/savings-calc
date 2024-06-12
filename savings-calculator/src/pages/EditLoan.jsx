@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext, useState, useEffect } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import LoanForm from '../components/LoanForm';
 import { LoanContext } from '../context/LoanContext';
@@ -11,6 +11,19 @@ const EditLoan = () => {
   const [results, setResults] = useState(null);
   const navigate = useNavigate();
   const [safeguard, setSafeguard] = useState(null);
+  const [windowWidth, setWindowWidth] = useState(window.innerWidth);
+
+  useEffect(() => {
+    const handleResize = () => {
+      setWindowWidth(window.innerWidth);
+    };
+
+    window.addEventListener('resize', handleResize);
+
+    return () => {
+      window.removeEventListener('resize', handleResize);
+    };
+  }, []);
 
   const handleFormSubmit = (values) => {
     const savings = calculateLoanSavings(values);
@@ -34,12 +47,15 @@ const EditLoan = () => {
     <div className="min-h-screen flex flex-col items-center bg-gray-100 p-4 relative">
       <button
         onClick={() => navigate('/')}
-        className="absolute top-6 left-8 bg-primary bg-opacity-80 text-white py-2 px-4 rounded-full shadow-md hover:bg-primary focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 transition duration-300 transform hover:scale-105 flex items-center"
+        className={`absolute top-6 left-6 bg-primary text-white py-2 px-4 rounded-full shadow-md hover:bg-primary focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 transition duration-300 transform hover:scale-105 flex items-center ${windowWidth < 520 ? 'w-10 h-10 p-0' : ''}`}
+        style={{ paddingLeft: windowWidth < 520 ? '0.7rem' : '' }}
       >
-        ← Home
+        {windowWidth < 520 ? '←' : '← Home'}
       </button>
       <div className="w-full max-w-md flex justify-center mb-6 mt-4">
-        <h2 className="text-3xl font-semibold">Edit Loan Account</h2>
+        <h2 className="text-3xl font-semibold">
+          {windowWidth < 420 ? 'Edit Loan' : 'Edit Loan Account'}
+        </h2>
       </div>
       <div className="bg-white p-6 rounded-lg shadow-lg w-full max-w-md">
         <LoanForm
@@ -60,7 +76,7 @@ const EditLoan = () => {
         {results !== null && (
           <div>
             <div className="mt-4 text-lg text-green-500">
-              Your savings: {results.savings.toLocaleString(undefined, {currency:'USD', style:'currency', currencyDisplay:'narrowSymbol'})}
+              Your savings: {results.savings.toLocaleString(undefined, { currency: 'USD', style: 'currency', currencyDisplay: 'narrowSymbol' })}
             </div>
             {safeguard[0] !== null && (
               <div>
