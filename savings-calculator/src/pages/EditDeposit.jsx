@@ -46,13 +46,13 @@ const EditDeposit = () => {
       <button
         onClick={() => navigate('/')}
         className={`absolute top-6 left-8 bg-primary text-white py-2 px-4 rounded-full shadow-md hover:bg-primary focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 transition duration-300 transform hover:scale-105 flex items-center ${windowWidth < 550 ? 'w-10 h-10 p-0' : ''}`}
-        style={{ paddingLeft: windowWidth < 550 ? '0.25rem' : '' }}
+        style={{ paddingLeft: windowWidth < 550 ? '0.7rem' : '' }}
       >
         {windowWidth < 550 ? '←' : '← Home'}
       </button>
       <div className="w-full max-w-md flex justify-center mb-6 mt-4">
         <h2 className="text-3xl font-semibold">
-          {windowWidth < 420 ? 'Edit Deposit' : 'Edit Deposit Account'}
+          {windowWidth < 450 ? 'Edit Deposit' : 'Edit Deposit Account'}
         </h2>
       </div>
       <div className="bg-white p-6 rounded-lg shadow-lg w-full max-w-md">
