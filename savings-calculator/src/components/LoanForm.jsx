@@ -46,7 +46,7 @@ const LoanForm = ({ initialValues, onSubmit, inputClass, labelClass, errorClass,
           <div className="mb-4">
             <label htmlFor="loanType" className={labelClass}>Loan Type</label>
             <Field as="select" name="loanType" id="loanType" className={inputClass}>
-              <option value="" label="Select loan type" />
+              <option value="" label="Select Loan Type" />
               <option value="Personal" label="Personal" />
               <option value="Auto" label="Auto" />
             </Field>
@@ -56,7 +56,7 @@ const LoanForm = ({ initialValues, onSubmit, inputClass, labelClass, errorClass,
             <div className="mb-4">
               <label htmlFor="vehicleModelAge" className={labelClass}>Vehicle Model Age</label>
               <Field as="select" name="vehicleModelAge" id="vehicleModelAge" className={inputClass}>
-                <option value="" label="Select vehicle model age" />
+                <option value="" label="Select Vehicle Model Age" />
                 <option value="0-1 years old" label="0-1 years old" />
                 <option value="2-8 years old" label="2-8 years old" />
                 <option value="9-12 years old" label="9-12 years old" />
@@ -67,7 +67,7 @@ const LoanForm = ({ initialValues, onSubmit, inputClass, labelClass, errorClass,
           <div className="mb-4">
             <label htmlFor="ficoScore" className={labelClass}>Fico Score</label>
             <Field as="select" name="ficoScore" id="ficoScore" className={inputClass}>
-              <option value="" label="Select Fico score" />
+              <option value="" label="Select FICO Score" />
               <option value="excellent" label="Excellent" />
               <option value="veryGood" label="Very Good" />
               <option value="average" label="Average" />
