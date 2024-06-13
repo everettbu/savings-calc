@@ -6,7 +6,7 @@ const DepositCard = ({ deposit, index, onEdit }) => {
       className="bg-white p-6 shadow rounded-lg border-l-4 border-slate-400 mb-4 cursor-pointer hover:shadow-md transition-shadow duration-300 group"
       onClick={() => onEdit(index)}
     >
-      <h3 className="text-xl font-semibold">{deposit.bank} Deposit Account</h3>
+      <h3 className="text-xl font-semibold">{deposit.bank} {deposit.accountName}</h3>
       <p>Balance: {deposit.balance.toLocaleString(undefined, {currency:'USD', style:'currency', currencyDisplay:'narrowSymbol'})}</p>
       <p>APR: {deposit.annualYield}%</p>
       <div className="relative">
