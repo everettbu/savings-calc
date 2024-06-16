@@ -1,6 +1,5 @@
 import React, { useEffect, useRef } from 'react';
 import { Transition } from 'react-transition-group';
-import logo from '../assets/logo.png';
 
 const Menu = ({ isDrawerOpen, toggleDrawer, navigate }) => {
   const drawerRef = useRef(null);
@@ -56,7 +55,7 @@ const Menu = ({ isDrawerOpen, toggleDrawer, navigate }) => {
                     </button>
                   </li>
                   <li>
-                    <a href='https://app.loanspq.com/xa/xpressApp.aspx?enc=Kw21Wblm1yxpjJabdoZaD9P5Ohrb21U42vf4mi4ehVOHesN2P5T0h5-U4tYLIGz1pbxW5gXLDq4i9XcbQAEpui6QgaQp7OmdIC4KX01JRaLYmxn24WPdjZkK9UMNSPC3' target="_blank" rel="noopener noreferrer" className="text-primary p-2 text-xl hover:underline">
+                    <a href='' target="_blank" rel="noopener noreferrer" className="text-primary p-2 text-xl hover:underline">
                       Open Account
                     </a>
                   </li>
@@ -67,11 +66,6 @@ const Menu = ({ isDrawerOpen, toggleDrawer, navigate }) => {
                   </li>
                 </ul>
               </nav>
-            </div>
-            <div className="flex justify-center items-center p-4">
-              <a href='https://www.firstcitycu.org/' target="_blank" rel="noopener noreferrer">
-                <img src={logo} alt="First City Logo" className="w-40 h-28 object-contain" />
-              </a>
             </div>
           </div>
         )}

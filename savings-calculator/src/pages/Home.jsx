@@ -65,13 +65,6 @@ const Home = () => {
           ☰
         </button>
         <h1 className="text-2xl font-bold text-center">{windowWidth < 430 ? 'Savings Calculator' : 'Financial Savings Calculator'}</h1>
-        <a href='https://www.firstcitycu.org/' target="_blank" rel="noopener noreferrer">
-          <img
-            src={logo}
-            alt="Logo"
-            className="absolute top-1 right-5 w-8 h-8 object-contain"
-          />
-        </a>
       </header>
       <Menu isDrawerOpen={isDrawerOpen} toggleDrawer={toggleDrawer} navigate={navigate} />
       <div className={`flex w-full items-start ${isDrawerOpen ? 'pointer-events-none' : ''}`} style={{ marginTop: '-1px' }}>
@@ -118,7 +111,7 @@ const Home = () => {
       <div className="flex flex-col items-center mt-2">
         <div className="border-t-2 border-l-2 border-r-2 border-secondary-dark rounded-t-lg bg-secondary text-white p-2 w-full max-w-sm">
           <h3 className="text-2xl font-semibold text-center">
-            Total Savings with First City: {(Math.round((totalSavings + Number.EPSILON) *100)/100).toLocaleString(undefined, {style:'currency', currency:'USD', currencyDisplay:'narrowSymbol'})}
+            Total Savings: {(Math.round((totalSavings + Number.EPSILON) *100)/100).toLocaleString(undefined, {style:'currency', currency:'USD', currencyDisplay:'narrowSymbol'})}
           </h3>
           {/* <p style={{fontSize: '0.6rem'}} className="text-center">
             Your savings with First City Credit Union are federally insured up to $250,000

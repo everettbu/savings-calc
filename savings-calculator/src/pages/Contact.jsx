@@ -27,23 +27,10 @@ const Contact = () => {
         >
           ☰
         </button>
-        <h1 className="text-2xl font-bold">Contact First City</h1>
-        <a href='https://www.firstcitycu.org/' target="_blank" rel="noopener noreferrer">
-          <img
-            src={logo}
-            alt="Logo"
-            className="absolute top-1 right-5 w-8 h-8 object-contain"
-          />
-        </a>
+        <h1 className="text-2xl font-bold">Contact</h1>
       </header>
       <Menu isDrawerOpen={isDrawerOpen} toggleDrawer={toggleDrawer} navigate={navigate} />
       <div className="flex flex-col items-center mt-10 px-4">
-        <div className="flex items-center text-2xl font-bold mb-2">
-          <FaPhone className="mr-2" /> Call
-        </div>
-        <div className="border-4 border-black rounded-lg flex flex-col justify-center items-center mb-5 p-4 bg-white shadow-md">
-          (213) 482-3477 or (800) 944-2200
-        </div>
         <div className="text-2xl font-bold mt-5 flex items-center">
           <FaEnvelope className="mr-2" /> Email
         </div>
@@ -73,9 +60,6 @@ const Contact = () => {
             >
               Send
             </button>
-          </div>
-          <div className="w-full max-w-md text-sm mt-4 px-4 text-center">
-            In most cases, we will reply to your email within two working days. Please note that this is NOT a secured email. DO NOT include personal information such as account numbers, social security numbers, or driver license numbers in emails sent through our website (outside of FirstCity online banking and bill payment login areas, which are secure).
           </div>
         </main>
       </div>
